@@ -1,0 +1,40 @@
+Shoperations is a [node.js](http://nodejs.org/) + [Express](http://nodejs.org/) app used to manage the Carbonmade store (backend).
+
+# Setting up
+
+## Install node + dependencies
+
+This sequence of commands will install the latest versions of node, [npm](https://github.com/isaacs/npm), and express:
+
+    echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.profile
+    . ~/.profile
+    mkdir ~/local
+    mkdir ~/node-latest-install
+    cd ~/node-latest-install
+    curl http://nodejs.org/dist/node-v0.3.3.tar.gz | tar xz --strip-components=1
+    ./configure --prefix=~/local
+    make install
+    curl -# http://npmjs.org/install.sh | sudo sh
+    curl -# http://expressjs.com/install.sh | sudo sh
+
+(Adapted from [this gist](https://gist.github.com/579814#file_node_and_npm_in_30_seconds.sh))
+
+Verify the installation worked with `node -v && npm -v && express -v` -- you should see output similar to this:
+
+    v0.3.3
+    0.2.14-2
+    2.0.0-pre
+
+
+Then install [jade](http://jade-lang.com/) and [less](http://lesscss.org/):
+
+    npm install jade
+    npm install less
+    
+## Running Shoperations
+
+    git clone git@github.com:Carbonmade/Shoperations.git
+    cd Shoperations
+    node app.js
+    
+You should now be able to view Shoperations at [http://localhost:3000](http://localhost:3000)
