@@ -2,7 +2,7 @@ Shoperations is a [node.js](http://nodejs.org/) + [Express](http://nodejs.org/) 
 
 # Setting up
 
-## Install node + dependencies
+## Node, Express & NPM
 
 This sequence of commands will install the latest versions of node, [npm](https://github.com/isaacs/npm), and express:
 
@@ -25,11 +25,23 @@ Verify the installation worked with `node -v && npm -v && express -v` -- you sho
     0.2.14-2
     2.0.0-pre
 
+## Dependencies
 
-Then install [jade](http://jade-lang.com/) and [less](http://lesscss.org/):
+Shoperations makes use of the following Node modules:
 
-    npm install jade
-    npm install less
+* [jade](http://jade-lang.com/)
+* [less](http://lesscss.org/)
+* [restler](https://github.com/danwrong/restler)
+
+NPM modules can be installed with:
+
+    npm install jade less
+    
+Restler is not in the npm repo, so you need to [clone from github](https://github.com/danwrong/restler) and manually install:
+
+    git clone https://github.com/danwrong/restler.git
+    cd restler
+    npm install .
     
 ## Running Shoperations
 
