@@ -1,8 +1,181 @@
+/* =======================================================================
+1 - Reset
+========================================================================== */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+ol,ul {list-style:none;}
+caption,th {text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content:'';}
+abbr,acronym {border:0;}
+
+
+
+/* =======================================================================
+2 - LESS Mixins
+========================================================================== */
+.background_gradient(@from:#000, @to:#EEE) {
+  background: @from;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(@from), to(@to));
+  background-image: -moz-linear-gradient(top, @from, @to);
+}
+
+.round(@radius:4px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+.round_top(@radius:4px) {
+  -webkit-border-top-left-radius: @radius;
+  -webkit-border-top-right-radius: @radius;
+  -moz-border-radius-topleft: @radius;
+  -moz-border-radius-topright: @radius;
+  border-top-left-radius: @radius;
+  border-top-right-radius: @radius;
+}
+
+
+
+/* =======================================================================
+3 - General
+========================================================================== */
+html, body, form, fieldset, h1, h2, h3, h4, h5, h6, p, pre, blockquote, ul, ol, dl, address, abbr, input, select, textarea, table, td, th { 
+  font-family:"Lucida Grande", "Trebuchet MS", Helvetica, Arial,sans-serif;
+  color: #222222;
+  font-size: 14px;
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
+}
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #e4e4e4;
+  min-width: 720px;
 }
 
 a {
-  color: #00B7FF;
+	color: #6ba8d8;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+small {
+  font-size: 12px;
+  color: #999;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+table th,
+table td {
+  border-bottom: 1px dashed #e4e4e4;
+  padding: 8px;
+}
+
+table th {
+  color: #999;
+  font-size: 12px;
+  line-height: 1;
+}
+
+table small {
+  margin-left: 16px;
+}
+
+/* =======================================================================
+4 - Header & Navigation
+========================================================================== */
+header {
+  .background_gradient(#000, #282828);
+  padding: 32px 32px 0 32px;
+}
+
+header h1 {
+  color: #fff;
+  font-weight: bold;
+  float: left;
+  font-size: 16px;
+}
+
+header p {
+  color: #999;
+  float: right;
+}
+
+nav {
+  clear: both;
+  padding-top: 16px;
+  overflow: hidden;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+  font-weight: normal;
+  .background_gradient(#e4e4e4, #a4a4a4);
+  color: #666;
+  padding: 8px 16px;
+  text-decoration: none;
+  margin-right: 4px;
+  .round_top(10px);
+  -webkit-transition-duration: .1s;
+  border: none;
+}
+
+nav li a:hover {
+  .background_gradient(#fff, #c9c9c9);
+  color: #333;
+  padding-bottom: 12px;
+  margin-top: -4px;
+}
+
+nav li.active a {
+  background: #fff;
+  color: #000;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-top: -8px;
+  font-weight: bold;
+}
+
+
+
+/* =======================================================================
+4 - Main
+========================================================================== */
+#main {
+  background: #fff;
+  margin: 0 32px;
+  padding: 16px;
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.25);
+}
+
+#main h1 {
+  color: #000;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: bold;
+  .background_gradient(#eee, #fff);
+  padding: 12px 6px;
+}
+
+.status {
+  font-size: 12px;
+  background: #fff000;
+  color: #000;
+  padding: 4px 12px;
+  font-weight: bold;
+  .round(10px);
 }

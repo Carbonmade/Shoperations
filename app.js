@@ -4,8 +4,7 @@
  */
 
 var express = require('express');
-
-var app = module.exports = express.createServer();
+app = module.exports = express.createServer();
 
 // Configuration
 
@@ -28,16 +27,11 @@ app.configure('production', function(){
 });
 
 // Routes
-
-app.get('/', function(req, res){
-  res.render('index', {
-    title: 'Express'
-  });
-});
+require('./routes/orders');
 
 // Only listen on $ node app.js
 
 if (!module.parent) {
   app.listen(3000);
-  console.log("Express server listening on port %d", app.address().port)
+  console.log("Express server listening on port %d", app.address().port);
 }

@@ -1,6 +1,22 @@
-!!!
+!!! 5
 html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body!= body
+  body
+    header
+      h1 Shoperations
+      p Hola, Carlos!
+      nav
+        ul
+          li
+            a(href="#") Dashboard
+          li
+            a(href="#") Products
+          li.active
+            a(href="#") Orders
+          li
+            a(href="#") Packages
+          li
+            a(href="#") Customers
+    #main!= body
