@@ -29,7 +29,7 @@ Verify the installation worked with `node -v && npm -v && express -v` -- you sho
 
 Shoperations makes use of the following Node modules:
 
-* [jade](http://jade-lang.com/)
+* [jade](http://jade-lang.com/) ([TextMate bundle](https://github.com/miksago/jade-tmbundle))
 * [less](http://lesscss.org/)
 * [restler](https://github.com/danwrong/restler)
 
