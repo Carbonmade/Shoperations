@@ -1,0 +1,22 @@
+h1= title
+  
+
+table
+  thead
+    tr
+      th Order ID
+      th Customer
+      th Amount
+      th Created
+      th Status
+  tbody
+    - for(idx in orders)
+      - var order = orders[idx]
+      tr
+        td
+          a(href="/orders/" + order.id)!= order.id
+        td!= order.customer.name
+        td!= "$" + order.amount
+        td!= order.created
+        td
+          span.status!= order.status
