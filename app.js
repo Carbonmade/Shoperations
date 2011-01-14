@@ -4,7 +4,8 @@
  */
 
 var express = require('express'),
-    helpers = require('./helpers');
+    helpers = require('./helpers'),
+    nav = require('./nav');
 app = module.exports = express.createServer();
 
 // Configuration
@@ -18,6 +19,7 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.staticProvider(__dirname + '/public'));
   app.helpers(helpers);
+  app.helpers(nav);
 });
 
 app.configure('development', function(){

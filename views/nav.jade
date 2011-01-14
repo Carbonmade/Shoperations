@@ -1,0 +1,3 @@
+- each tab in nav_tabs
+  li(class = current_tab(tab, this.url) ? 'active' : null)
+    a(href=tab.href)= tab.label

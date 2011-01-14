@@ -8,15 +8,5 @@ html
       h1 Shoperations
       p Hola, Carlos!
       nav
-        ul
-          li
-            a(href="#") Dashboard
-          li
-            a(href="#") Products
-          li.active
-            a(href="/orders") Orders
-          li
-            a(href="#") Packages
-          li
-            a(href="/customers") Customers
+        ul!= partial('nav')
     #main!= body
