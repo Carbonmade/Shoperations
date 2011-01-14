@@ -33,7 +33,12 @@ table.order
       th Discount
       th Tax
       th Total
-  tbody!= partial('line', {collection: order.lines, as: 'line'})
+  tbody
+    - each line in order.lines
+      - if(line.type === 'Sale')
+        != partial('line', {object:line, as:'line'})
+      - else
+        != partial('freight', {object:line, as:'freight'})
   tfoot
     tr.summary
       td(colspan=5) Total

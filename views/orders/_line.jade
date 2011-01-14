@@ -1,19 +1,15 @@
-- var isSale = line.type === 'Sale'
 tr
   td
-    a(href="#")= isSale ? line.product.description : line.description
-    small= isSale ? line.product.type.name : line.type
-  td= line.unitPrice.toCurrency()
+    a(href="/products/" + line.product.id)= line.product.description
+    small= line.product.type.name
+  td= line.product.price.toCurrency()
   td= line.quantity
-  - if(isSale)
-    td= line.discount.amount.toCurrency()
+  td ?
+  - if(line.tax)
     td
-      abbr(title=line.tax.schedule.rate*100 + "% - " + line.tax.schedule.jurisdiction.name)= "$" + line.tax.amount.toCurrency()
+      abbr(title=line.tax.schedule.rate*100 + "% - " + line.tax.schedule.jurisdiction.name)
+        = line.tax.amount.toCurrency()
   - else
     td
-    td
   td
-    - if(isSale)
-      strong= (line.extendedPrice - line.discount.amount + line.tax.amount).toCurrency()
-    - else
-      strong= line.extendedPrice.toCurrency()
+    strong= line.amount.toCurrency()
