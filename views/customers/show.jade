@@ -1,0 +1,15 @@
+h1= title
+
+table
+  tr
+    th Name
+    td= customer.name
+
+h1= "Orders (" + customer.orders.length + ")"
+
+table
+  - each order in customer.orders
+    //- Hack to get order.customer working in the _order.jade partial.
+    - order.customer = customer
+    != partial('../orders/order', {object: order, as: "order"})
+  

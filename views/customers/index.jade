@@ -1,0 +1,17 @@
+h1= title
+  
+
+table
+  thead
+    tr
+      th ID
+      th Name
+      th Orders
+  tbody
+    - each customer in customers
+      tr
+        td= customer.id
+        td
+          a(href="/customers/" + customer.id)= customer.name
+
+        td= customer.orders.length

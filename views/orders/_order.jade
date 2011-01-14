@@ -1,0 +1,9 @@
+tr
+  td
+    a(href="/orders/" + order.id)!= order.id
+  td
+    a(href="/customers/" + order.customer.id)= order.customer.name
+  td!= "$" + order.amount
+  td!= date(order.created)
+  td
+    span.status!= order.status

@@ -30,6 +30,7 @@ app.configure('production', function(){
 
 // Routes
 require('./routes/orders');
+require('./routes/customers');
 
 // Only listen on $ node app.js
 

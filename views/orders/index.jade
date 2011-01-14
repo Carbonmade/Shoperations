@@ -10,14 +10,5 @@ table
       th Created
       th Status
   tbody
-    - for(idx in orders)
-      - var order = orders[idx]
-      tr
-        td
-          a(href="/orders/" + order.id)!= order.id
-        td
-          a(href="/customers/" + order.customer.id)= order.customer.name
-        td!= "$" + order.amount
-        td!= date(order.created)
-        td
-          span.status!= order.status
+    != partial('order', {collection: orders, as: "order"})
+      

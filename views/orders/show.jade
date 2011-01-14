@@ -7,7 +7,7 @@ table
   tr
     th Customer
     td
-      a(href="#")= order.customer.name
+      a(href="/customers/" + order.customer.id)= order.customer.name
   tr
     th Amount
     td= order.amount.toCurrency()
