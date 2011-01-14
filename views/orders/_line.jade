@@ -3,17 +3,17 @@ tr
   td
     a(href="#")= isSale ? line.product.description : line.description
     small= isSale ? line.product.type.name : line.type
-  td= "$" + line.unitPrice
+  td= line.unitPrice.toCurrency()
   td= line.quantity
   - if(isSale)
-    td= "$" + line.discount.amount
+    td= line.discount.amount.toCurrency()
     td
-      abbr(title=line.tax.schedule.rate*100 + "% - " + line.tax.schedule.jurisdiction.name)= "$" + line.tax.amount
+      abbr(title=line.tax.schedule.rate*100 + "% - " + line.tax.schedule.jurisdiction.name)= "$" + line.tax.amount.toCurrency()
   - else
     td
     td
   td
     - if(isSale)
-      strong= "$" + (line.extendedPrice - line.discount.amount + line.tax.amount)
+      strong= (line.extendedPrice - line.discount.amount + line.tax.amount).toCurrency()
     - else
-      strong= "$" + line.extendedPrice
+      strong= line.extendedPrice.toCurrency()
