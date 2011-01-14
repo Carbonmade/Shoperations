@@ -3,7 +3,8 @@
  * Module dependencies.
  */
 
-var express = require('express');
+var express = require('express'),
+    helpers = require('./helpers');
 app = module.exports = express.createServer();
 
 // Configuration
@@ -16,6 +17,7 @@ app.configure(function(){
   app.use(express.compiler({ src: __dirname + '/public', enable: ['less'] }));
   app.use(app.router);
   app.use(express.staticProvider(__dirname + '/public'));
+  app.helpers(helpers);
 });
 
 app.configure('development', function(){
