@@ -10,7 +10,7 @@ table
       a(href="#")= order.customer.name
   tr
     th Amount
-    td= currency(order.amount)
+    td= order.amount.toCurrency()
   tr
     th Created
     td= date(order.created)
@@ -37,5 +37,5 @@ table.order
   tfoot
     tr.summary
       td(colspan=5) Total
-      td= "$" + order.amount
+      td= order.amount.toCurrency()
       
