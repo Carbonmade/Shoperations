@@ -31,7 +31,26 @@ table
       td
         = event.description
         small= date(event.created)
-      
+
+h1 Transactions
+
+table
+  thead
+    tr
+      th Payment method
+      th Date
+      th Amount
+      th Status
+      th TX
+  tbody
+    - each tx in order.transactions
+      tr
+        td= tx.paymentMethod.description
+        td= date(tx.created)
+        td= tx.amount.toCurrency()
+        td= tx.state
+        td= tx.id
+  
 h1 Items
 
 table.order
@@ -43,6 +62,7 @@ table.order
       th Discount
       th Tax
       th Total
+      th History
   tbody
     - each line in order.lines
       - if(line.type === 'Sale')
@@ -53,4 +73,40 @@ table.order
     tr.summary
       td(colspan=5) Total
       td= order.amount.toCurrency()
-      
+
+h1 Packages
+
+table
+  thead
+    tr
+      th ID
+      th Container
+      th Shipped via
+      th Tracking #
+      th Origin
+      th Destination
+  tbody
+    - each package in order.packages
+      tr
+        td= package.id
+        td= package.container.name
+        td= package.shippingMethod.name
+        - if(package.status === "Shipped")
+          td
+            a(href="#")= package.trackingNumber
+        - else 
+          td
+            small Hasn't shipped
+        td
+          address
+            = package.origin.name
+            br
+            != package.origin.address.replace('\n', '<br />')
+        td
+          address
+            = package.destination.name
+            br
+            != package.destination.address.replace('\n', '<br />')
+            - if(package.destination.phoneNumber)
+              br
+              = package.destination.phoneNumber

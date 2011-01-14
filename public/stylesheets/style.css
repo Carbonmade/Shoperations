@@ -67,6 +67,7 @@ table th {
   line-height: 1;
 }
 table small { margin-left: 16px; }
+address { font-size: 12px; }
 header {
   background: #000000;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#282828));
@@ -126,7 +127,7 @@ nav li.active a {
 }
 #main {
   background: #ffffff;
-  margin: 0 32px;
+  margin: 0 32px 32px 32px;
   padding: 16px;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
