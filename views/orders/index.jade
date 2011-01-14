@@ -15,8 +15,9 @@ table
       tr
         td
           a(href="/orders/" + order.id)!= order.id
-        td!= order.customer.name
+        td
+          a(href="/customers/" + order.customer.id)= order.customer.name
         td!= "$" + order.amount
-        td!= order.created
+        td!= date(order.created)
         td
           span.status!= order.status
