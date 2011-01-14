@@ -3,7 +3,6 @@ var cm = require('../carbonmade');
 // List orders
 app.get('/orders', function(req, res){
   cm.get('orders', function(orders) {
-    console.log(orders);
     res.render('orders/index', {
       title: 'Orders',
       orders: orders
