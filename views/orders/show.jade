@@ -21,6 +21,16 @@ table
     th Status
     td
       span.status= order.status
+  tr
+    th(rowspan=order.history.length) History
+    td
+      = order.history[0].description
+      small= date(order.history[0].created)
+  - each event in order.history.slice(1)
+    tr
+      td
+        = event.description
+        small= date(event.created)
       
 h1 Items
 
