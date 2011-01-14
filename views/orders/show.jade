@@ -1,22 +1,22 @@
 h1= title
   
-
 table
   tr
     th Order ID
-    td!= order.id    
+    td= order.id    
   tr
     th Customer
     td
-      a(href="#")!= order.customer.name
+      a(href="#")= order.customer.name
   tr
     th Amount
-    td!= "$" + order.amount
+    td= currency(order.amount)
   tr
     th Created
-    td
-      != order.created
-      small Last updated 4 hours ago
+    td= date(order.created)
+  tr
+    th Last Modified
+    td= date(order.modified)
   tr
     th Status
     td
@@ -24,18 +24,18 @@ table
       
 h1 Items
 
-table
+table.order
   thead
     tr
       th Description
       th Unit Price
       th Quantity
-      th Line Total
-  tbody
-    - for(line in order.lines)
-      tr
-        td
-          a(href="#")!= order.lines[line].description
-        td!= "$" + order.lines[line].unitPrice
-        td!= order.lines[line].quantity
-        td!= "$" + order.lines[line].extendedPrice
+      th Discount
+      th Tax
+      th Total
+  tbody!= partial('line', {collection: order.lines, as: 'line'})
+  tfoot
+    tr.summary
+      td(colspan=5) Total
+      td= "$" + order.amount
+      

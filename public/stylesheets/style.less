@@ -53,7 +53,13 @@ body {
   background: #e4e4e4;
   min-width: 720px;
 }
-
+strong {
+  font-weight: bold;
+}
+abbr {
+  border-bottom: 1px dotted #999;
+  cursor: help;
+}
 a {
 	color: #6ba8d8;
 	font-weight: bold;
@@ -127,7 +133,6 @@ nav li a {
   .background_gradient(#e4e4e4, #a4a4a4);
   color: #666;
   padding: 8px 16px;
-  text-decoration: none;
   margin-right: 4px;
   .round_top(10px);
   -webkit-transition-duration: .1s;
@@ -136,6 +141,7 @@ nav li a {
 
 nav li a:hover {
   .background_gradient(#fff, #c9c9c9);
+  text-decoration: none;
   color: #333;
   padding-bottom: 12px;
   margin-top: -4px;
@@ -178,4 +184,13 @@ nav li.active a {
   padding: 4px 12px;
   font-weight: bold;
   .round(10px);
+}
+
+table.order tbody tr:last-child td {
+  border-bottom: 5px solid #eee;
+}
+
+tr.summary td {
+  font-weight: bold;
+  border-bottom: none;
 }
