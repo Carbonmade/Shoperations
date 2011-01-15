@@ -1,0 +1,34 @@
+h1= title
+
+table
+  thead
+    tr
+      th Tracking #
+      th Shipment
+      th Origin
+      th Destination
+      th Status
+      th
+  tbody
+    - each package in packages
+      td
+        - if(package.status === 'Shipped')
+          a(href="#")= package.trackingNumber
+        - else
+          small Not shipped
+      td
+        = package.shippingMethod.name
+        br
+        small= package.container.name + " (" + package.items.length + " items)"
+      td
+        = package.origin.name
+        br
+        small= package.origin.address
+      td
+        = package.destination.name
+        br
+        small= package.destination.address
+      td
+        span.status= package.status
+      td
+        a(href="/packages/" + package.status) Details &raquo;

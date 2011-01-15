@@ -33,6 +33,7 @@ app.configure('production', function(){
 // Routes
 require('./routes/orders');
 require('./routes/customers');
+require('./routes/packages');
 
 // Only listen on $ node app.js
 
