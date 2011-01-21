@@ -31,25 +31,6 @@ table
       td= event.description
       td
         small= date(event.created)
-
-h1 Transactions
-
-table
-  thead
-    tr
-      th Payment method
-      th Date
-      th Amount
-      th Status
-      th TX
-  tbody
-    - each tx in order.transactions
-      tr
-        td= tx.paymentMethod.description
-        td= date(tx.created)
-        td= tx.amount.toCurrency()
-        td= tx.state
-        td= tx.id
   
 h1 Items
 
