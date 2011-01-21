@@ -1,6 +1,7 @@
 tr
   td
     a(href="/products/" + line.product.id)= line.product.description
+    br
     small= line.product.type.name
   td
     //- If `originalPrice` is present, it means `price` is the result of an adjustment.

@@ -1,4 +1,6 @@
 tr
-  td(colspan=5)= freight.description
+  td(colspan=5)
+    = freight.description
+    br
     small= freight.type
   td= freight.amount.toCurrency()
