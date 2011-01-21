@@ -51,7 +51,11 @@ html, body, form, fieldset, h1, h2, h3, h4, h5, h6, p, pre, blockquote, ul, ol, 
 }
 body {
   background: #e4e4e4;
-  min-width: 720px;
+}
+.container {
+  width: 960px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 strong {
   font-weight: bold;
@@ -72,8 +76,8 @@ a:hover {
 }
 
 small {
-  font-size: 12px;
-  color: #999;
+  font-size: 11px;
+  color: #666;
 }
 
 table {
@@ -92,10 +96,6 @@ table th {
   font-size: 12px;
   line-height: 1;
 }
-
-table small {
-  margin-left: 16px;
-}
 address {
   font-size: 12px;
 }
@@ -105,7 +105,11 @@ address {
 ========================================================================== */
 header {
   .background_gradient(#000, #282828);
-  padding: 32px 32px 0 32px;
+  padding: 32px 0 0 0;
+}
+
+header .container {
+  width: 992px;
 }
 
 header h1 {
@@ -166,7 +170,7 @@ nav li.active a {
 ========================================================================== */
 #main {
   background: #fff;
-  margin: 0 32px 32px 32px;
+  margin-bottom: 32px;
   padding: 16px;
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,.25);
 }
@@ -196,4 +200,17 @@ table.order tbody tr:last-child td {
 tr.summary td {
   font-weight: bold;
   border-bottom: none;
+}
+
+form.search {
+  .background_gradient(#444, #222);
+  padding: 10px;
+  .round_top(6px);
+  margin: 8px 0 0 0;
+  text-align: right;
+}
+
+form.search select,
+form.search input  {
+ margin: 0 10px; 
 }

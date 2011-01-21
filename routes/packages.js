@@ -13,7 +13,7 @@ app.get('/packages/:id', function(req, res){
   cm.get('packages', req.params.id, function(_package) {
     res.render('packages/show', {
       title: 'Package Details',
-      _package: _package
+      "package": _package
     });
   });
 });

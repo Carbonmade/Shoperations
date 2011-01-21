@@ -5,8 +5,9 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     header
-      h1 Shoperations
-      p Hola, Carlos!
-      nav
-        ul!= partial('nav')
-    #main!= body
+      .container
+        h1 Shoperations
+        p Hola, Carlos!
+        nav
+          ul!= partial('nav')
+    #main.container!= body

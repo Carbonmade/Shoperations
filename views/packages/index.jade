@@ -1,5 +1,16 @@
 h1= title
 
+form.search(action="", method="get")
+  p
+    select(name="status")
+      optgroup(label="Package Status")
+        option - Any status -
+        option Open
+        option Shipped
+        option Delivered
+    input(type="search", placeholder="Keywords")
+    input(type="submit", value="Search!")
+
 table
   thead
     tr
@@ -21,14 +32,10 @@ table
         br
         small= package.container.name + " (" + package.items.length + " items)"
       td
-        = package.origin.name
-        br
-        small= package.origin.address
+        abbr(title=package.origin.address)= package.origin.name
       td
-        = package.destination.name
-        br
-        small= package.destination.address
+        abbr(title=package.destination.address)= package.destination.name
       td
         span.status= package.status
       td
-        a(href="/packages/" + package.status) Details &raquo;
+        a(href="/packages/" + package.id) Details &raquo;
