@@ -1,0 +1,28 @@
+h1 Package Details
+
+table
+  tr
+    th Container
+    td= package.container.name
+  tr
+    th Dimensions
+    td= package.container.dimensions.length + " x " + package.container.dimensions.width + " x " + package.container.dimensions.height
+  tr
+    th Weight
+    th= package.weight
+  tr
+    th Origin
+    td 
+      = package.origin.name
+      br
+      != package.origin.address.replace('\n', '<br />')
+  tr
+    th Destination
+    td 
+      = package.destination.name
+      br
+      != package.destination.address.replace('\n', '<br />')
+  tr
+    th Status
+    td
+      span.status= package.status
