@@ -47,6 +47,8 @@ Restler is not in the npm repo, so you need to [clone from github](https://githu
 
     git clone git@github.com:Carbonmade/Shoperations.git
     cd Shoperations
-    node app.js
+    node dev.js
     
 You should now be able to view Shoperations at [http://localhost:3000](http://localhost:3000)
+
+Note that `node dev.js` should only be used for local development. Using `dev.js` allows for [auto-reloading](http://dracoblue.net/dev/hot-reload-for-nodejs-servers-on-code-change/173/) of Node/Express when JS files change. To run in production, `node app.js`.
