@@ -4,7 +4,7 @@ tr
   td
     a(href="/products/" + line.product.id)= line.product.description
     br
-    small= line.product.type.name
+    small Product specs go here
   td.r
     //- If `originalPrice` is present, it means `price` is the result of an adjustment.
     - if(line.product.originalPrice)
@@ -19,12 +19,12 @@ tr
       | -
   - if(line.tax)
     td.r
-      abbr(title=line.tax.schedule.rate*100 + "% - " + line.tax.schedule.jurisdiction.name)
+      abbr(title=line.tax.schedule.rate*100 + "%")
         = line.tax.amount.toCurrency()
   - else
     td.r -
   td.r
-    strong= line.amount.toCurrency()
+    strong= (line.amount || "Unknown!").toCurrency()
   td.c
     small
       a(href="#") History
