@@ -3,25 +3,25 @@ h1 Package Details
 table
   tr
     th Container
-    td= package.container.name
+    td= package.container.description
   tr
     th Dimensions
-    td= package.container.dimensions.length + " x " + package.container.dimensions.width + " x " + package.container.dimensions.height
+    td= dimensions(package.container.dimensions)
   tr
     th Weight
-    th= package.weight
+    td= package.weight
   tr
     th Origin
     td 
       = package.origin.name
       br
-      != package.origin.address.replace('\n', '<br />')
+      small!= address(package.origin.address, '<br />')
   tr
     th Destination
     td 
       = package.destination.name
       br
-      != package.destination.address.replace('\n', '<br />')
+      small!= address(package.destination.address, '<br />')
   tr
     th Status
     td

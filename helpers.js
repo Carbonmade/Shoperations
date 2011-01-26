@@ -19,3 +19,15 @@ Number.prototype.toCurrency = function() {
 helpers.address = function(address, joiner) {
   return address.lines.join(joiner || '\n');
 };
+
+// Format a dimensions object
+helpers.dimensions = function(dimensions) {
+  var dims = [],
+      bits,
+      units = {inches: "″", feet: "′"};
+  ['length', 'width', 'height'].forEach(function(dim) {
+    bits = dimensions[dim].split(' ');
+    dims.push(bits[0] + units[bits[1]]);
+  });
+  return dims.join(' x ');
+};
