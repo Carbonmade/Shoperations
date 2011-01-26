@@ -1,27 +1,30 @@
 tr
+  th.c
+    input(type="checkbox")
   td
     a(href="/products/" + line.product.id)= line.product.description
     br
     small= line.product.type.name
-  td
+  td.r
     //- If `originalPrice` is present, it means `price` is the result of an adjustment.
     - if(line.product.originalPrice)
       = line.product.originalPrice.toCurrency()
     - else
       = line.product.price.toCurrency()
-  td= line.quantity
-  td
+  td.r= line.quantity
+  td.r
     - if(line.product.originalPrice)
       = (line.product.originalPrice - line.product.price).toCurrency()
     - else
       | -
   - if(line.tax)
-    td
+    td.r
       abbr(title=line.tax.schedule.rate*100 + "% - " + line.tax.schedule.jurisdiction.name)
         = line.tax.amount.toCurrency()
   - else
-    td -
-  td
+    td.r -
+  td.r
     strong= line.amount.toCurrency()
-  td
-    a(href="#") (view)
+  td.c
+    small
+      a(href="#") History

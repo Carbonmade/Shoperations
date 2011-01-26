@@ -3,9 +3,10 @@ tr
     strong= order.id
   td
     a(href="/customers/" + order.customer.id)= order.customer.name
-  td= "$" + order.amount
-  td= date(order.created)
+  td.r(style="padding-right:40px;")= "$" + order.amount
+  td
+    small= date(order.created)
   td
     span.status!= order.status
-  td
+  td.r
     a(href="/orders/" + order.id) Details &raquo;

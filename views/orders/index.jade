@@ -1,24 +1,24 @@
 h1= title
 
-form.search(action="", method="get")
-  p
-    select(name="status")
-      optgroup(label="Order Status")
-        option - Any status -
-        option New
-        option Open
-        option Completed
+form.search(action="", method="get", style="overflow:hidden;")
+  p(style="float:left;")
     input(type="search", placeholder="Keywords")
-    input(type="submit", value="Search!")  
-
+  p.statuses(style="float:right;")
+    strong Status
+    a(href="#") All
+    a(href="#") Open
+    a(href="#") Completed
+    a(href="#") Cancelled
+    
 table
   thead
     tr
-      th Order ID
+      th ID
       th Customer
-      th Amount
+      th.r.r(style="padding-right:40px;") Amount
       th Created
       th Status
+      th
   tbody
     != partial('order', {collection: orders, as: "order"})
       

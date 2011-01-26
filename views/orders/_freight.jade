@@ -1,6 +1,11 @@
 tr
+  th.c
+    input(type="checkbox")
   td(colspan=5)
     = freight.description
     br
     small= freight.type
-  td= freight.amount.toCurrency()
+  td.r= freight.amount.toCurrency()
+  td.c
+    small
+      a(href="#") History

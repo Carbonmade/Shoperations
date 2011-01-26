@@ -12,21 +12,15 @@ table
     th Amount
     td= order.amount.toCurrency()
   tr
-    th Created
-    td= date(order.created)
-  tr
-    th Last Modified
-    td= date(order.modified)
-  tr
     th Status
     td
       span.status= order.status
   tr
-    th(rowspan=order.history.length) History
-    td= order.history[0].description
+    th(rowspan=order.history.length+1) History
+    td Order created
     td
-      small= date(order.history[0].created)
-  - each event in order.history.slice(1)
+      small= date(order.created)
+  - each event in order.history
     tr
       td= event.description
       td
@@ -37,13 +31,15 @@ h1 Items
 table.order
   thead
     tr
+      th.c
+        input(type="checkbox")
       th Description
-      th Price
-      th Quantity
-      th Discount
-      th Tax
-      th Total
-      th History
+      th.r Price
+      th.r Quantity
+      th.r Discount
+      th.r Tax
+      th.r Total
+      th
   tbody
     - each line in order.lines
       - if(line.type === 'Sale')
@@ -52,8 +48,13 @@ table.order
         != partial('freight', {object:line, as:'freight'})
   tfoot
     tr.summary
-      td(colspan=5) Total
-      td= order.amount.toCurrency()
+      td(colspan=2)
+        small
+          a(href="#") Refund selected items
+      td(colspan=4, style="text-align:right;") Total:
+      td.r= order.amount.toCurrency()
 
+p
+  input(type="submit", value="Void Order")
 
 //- != partial('packages', {object:order, as:'order'})
