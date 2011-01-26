@@ -15,14 +15,32 @@ table
     td 
       = package.origin.name
       br
-      small!= address(package.origin.address, '<br />')
+      small
+        address!= address(package.origin.address, '<br />')
   tr
     th Destination
     td 
       = package.destination.name
       br
-      small!= address(package.destination.address, '<br />')
+      small
+        address!= address(package.destination.address, '<br />')
+  tr
+    th Postage
+    td
+      = package.postage.amount.toCurrency()
+      small= " " + package.postage.provider
   tr
     th Status
     td
       span.status= package.status
+      
+  tr
+    th(rowspan=package.history.length+1) History
+    td Created
+    td
+      small ???
+  - each event in package.history
+    tr
+      td= event.description
+      td
+        small= date(event.created)
