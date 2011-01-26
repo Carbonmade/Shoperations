@@ -15,6 +15,10 @@ Number.prototype.toCurrency = function() {
   return helpers.currency(this);
 };
 
+String.prototype.toCurrency = function() {
+  return "$" + this;
+}
+
 // Formats lines of an address using a join character.
 helpers.address = function(address, joiner) {
   return address.lines.join(joiner || '\n');
