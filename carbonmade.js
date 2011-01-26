@@ -1,6 +1,6 @@
 var carbonmade = module.exports = {};
 var rest = require('restler'),
-    SITE = "http://platform.carbonmade.net";
+    SITE = "http://store.carbonmade.net";
 
 function show_url(model, id) {
   return [index_url(model), id].join("/");
