@@ -30,6 +30,10 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
+app.get('/', function(req, res) {
+  res.render('dashboard', {title: "Dashboard"});
+});
+
 // Routes
 require('./routes/orders');
 require('./routes/customers');
