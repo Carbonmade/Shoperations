@@ -5,9 +5,7 @@ form.search(action="", method="get", style="overflow:hidden;")
     input(type="search", placeholder="Keywords")
   p.statuses(style="float:right;")
     strong Status
-    a(href="/orders") All
-    a(href="/orders/open") Open
-    a(href="/orders/processing") Processing
+    != partial('order_filters', {object: results.params, as: "params"})
     
 table
   thead

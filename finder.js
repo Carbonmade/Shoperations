@@ -37,8 +37,8 @@ Finder.prototype.find = function() {
       var results = {};
       results[self.model] = data;
       results.totalRecords = response.headers['x-total'];
+      results.params = params;
       data = results;
-      console.log(data);
     }
     callback(data, response);
   });

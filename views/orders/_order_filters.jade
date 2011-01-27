@@ -1,0 +1,5 @@
+- nav = {All: '/orders', Open: '/orders/open', Processing: '/orders/processing'}
+
+- for(n in nav)
+  - active = params.status === n || (!params.status && n === 'All')
+  a(href=nav[n], class= active ? 'active' : 'inactive')= n

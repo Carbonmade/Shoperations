@@ -213,3 +213,7 @@ form.search .statuses a:hover {
   color: #ffffff;
   text-decoration: none;
 }
+form.search .statuses a.active {
+  background: #000000;
+  color: #ffffff;
+}
