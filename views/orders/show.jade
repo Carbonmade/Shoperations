@@ -13,8 +13,7 @@ table
     td= order.amount.toCurrency()
   tr
     th Status
-    td
-      span.status= order.status
+    td!= status_label(order)
   tr
     th(rowspan=order.history.length+1) History
     td Order created

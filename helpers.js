@@ -43,3 +43,7 @@ Object.values = function(object) {
       values.push(object[prop]);
   return values;
 };
+
+helpers.status_label = function(object) {
+  return '<span class="status ' + object.status.toLowerCase() + '">' + object.status + '</span>';
+};

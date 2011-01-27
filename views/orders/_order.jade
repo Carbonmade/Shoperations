@@ -1,12 +1,9 @@
 tr
-  td
-    strong= order.id
+  th.c
+    a(href="/orders/" + order.id)= order.id
   td
     a(href="/customers/" + order.customer.id)= order.customer.name
-  td.r(style="padding-right:40px;")= "$" + order.amount
   td
     small= date(order.created)
-  td
-    span.status!= order.status
-  td.r
-    a(href="/orders/" + order.id) Details &raquo;
+  td(style="padding-right:40px;")= "$" + order.amount
+  td!= status_label(order)
