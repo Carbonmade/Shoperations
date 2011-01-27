@@ -35,6 +35,7 @@ app.get('/', function(req, res) {
 });
 
 // Routes
+require('./routes/products');
 require('./routes/orders');
 require('./routes/customers');
 require('./routes/packages');

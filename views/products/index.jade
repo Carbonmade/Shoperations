@@ -1,0 +1,14 @@
+h1= title + " (" + results.totalRecords + ")"
+
+form.search(action="", method="get")
+  p
+    input(type="search", placeholder="Keywords")
+
+table
+  thead
+    tr
+      th Description
+      th Price
+      th On hand
+  tbody
+    != partial('product', {collection: results.products, as: "product"})
