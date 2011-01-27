@@ -11,7 +11,7 @@ This sequence of commands will install the latest versions of node, [npm](https:
     mkdir ~/local
     mkdir ~/node-latest-install
     cd ~/node-latest-install
-    curl http://nodejs.org/dist/node-v0.3.3.tar.gz | tar xz --strip-components=1
+    curl http://nodejs.org/dist/node-v0.3.6.tar.gz | tar xz --strip-components=1
     ./configure --prefix=~/local
     make install
     curl -# http://npmjs.org/install.sh | sudo sh
