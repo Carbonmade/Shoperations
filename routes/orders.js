@@ -29,6 +29,13 @@ app.get('/orders/processing', function(req, res){
   });
 });
 
+// Completed orders
+app.get('/orders/completed', function(req, res){
+  Orders.find({status: "Completed"}, function(results) {
+    renderOrderList(res, 'Completed Orders', results);
+  });
+});
+
 // Order details
 app.get('/orders/:id', function(req, res){
   Orders.find(req.params.id, function(order) {

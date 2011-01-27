@@ -7,15 +7,17 @@ form.search(action="", method="get", style="overflow:hidden;")
     strong Status
     != partial('order_filters', {object: results.params, as: "params"})
     
-table
-  thead
-    tr
-      th.c ID
-      th Customer
-      th Created
-      th(style="padding-right:40px;") Amount
-      th Status
-      th
-  tbody
-    != partial('order', {collection: results.orders, as: "order"})
-      
+- if(results.orders.length > 0)
+  table
+    thead
+      tr
+        th.c ID
+        th Customer
+        th Created
+        th(style="padding-right:40px;") Amount
+        th Status
+        th
+    tbody
+      != partial('order', {collection: results.orders, as: "order"})
+- else
+  p(style="font-size:18px;text-align:center;padding: 50px;") No results!
