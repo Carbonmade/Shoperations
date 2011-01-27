@@ -2,58 +2,58 @@ h1= title
   
 table
   tr
-    th Order ID
-    td= order.id    
-  tr
     th Customer
     td
       a(href="/customers/" + order.customer.id)= order.customer.name
+    th Order ID
+    td= order.id    
   tr
     th Amount
     td= order.amount.toCurrency()
-  tr
     th Status
     td!= status_label(order)
-  tr
-    th(rowspan=order.history.length+1) History
-    td Order created
-    td
-      small= date(order.created)
-  - each event in order.history
-    tr
-      td= event.description
-      td
-        small= date(event.created)
-  
-h1 Items
 
-table.order
-  thead
-    tr
-      th.c
-        input(type="checkbox")
-      th Description
-      th.r Price
-      th.r Quantity
-      th.r Discount
-      th.r Tax
-      th.r Total
-      th
-  tbody
-    - each line in order.lines
-      - if(line.type === 'Sale')
-        != partial('line', {object:line, as:'line'})
-      - else
-        != partial('freight', {object:line, as:'freight'})
-  tfoot
-    tr.summary
-      td(colspan=2)
-        small
-          a(href="#") Refund selected items
-      td(colspan=4, style="text-align:right;") Total:
-      td.r= order.amount.toCurrency()
+ul.tabs
+  li
+    a(href="#order-items") Items
+  li
+    a(href="#order-history") History
 
-p
-  input(type="submit", value="Void Order")
+#order-items.tab-panel
+  table.order
+    thead
+      tr
+        th.c
+          input(type="checkbox")
+        th Description
+        th.r Price
+        th.r Quantity
+        th.r Discount
+        th.r Tax
+        th.r Total
+        th
+    tbody
+      - each line in order.lines
+        - if(line.type === 'Sale')
+          != partial('line', {object:line, as:'line'})
+        - else
+          != partial('freight', {object:line, as:'freight'})
+    tfoot
+      tr.summary
+        td(colspan=2)
+          small
+            a(href="#") Refund selected items
+        td(colspan=4, style="text-align:right;") Total:
+        td.r= order.amount.toCurrency()
+
+#order-history.tab-panel
+  table
+    tr
+      td Order created
+      td= date(order.created)
+    - each event in order.history
+      tr
+        td= event.description
+        td= date(event.created)
 
 //- != partial('packages', {object:order, as:'order'})
