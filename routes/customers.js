@@ -1,11 +1,12 @@
-var cm = require('../carbonmade');
+var Finder = require('../finder'),
+    Customers = new Finder('customers');
 
 // List customers
 app.get('/customers', function(req, res){
-  cm.get('customers', 1, function(customer) {
+  Customers.find(function(results) {
     res.render('customers/index', {
       title: 'Customers',
-      customers: [customer]
+      results: results
     });
   });
 });

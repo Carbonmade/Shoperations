@@ -1,4 +1,8 @@
-h1= title
+h1= title + " (" + results.totalRecords + ")"
+
+form.search(action="", method="get")
+  p
+    input(type="search", placeholder="Keywords")
   
 
 table
@@ -8,10 +12,10 @@ table
       th Name
       th Orders
   tbody
-    - each customer in customers
+    - each customer in results.customers
       tr
         td= customer.id
         td
           a(href="/customers/" + customer.id)= customer.name
 
-        td= customer.orders.length
+        td= (customer.orders ? customer.orders.length : 0)

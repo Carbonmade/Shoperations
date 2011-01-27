@@ -15,7 +15,7 @@ Finder.prototype.buildURL = function(id, params) {
 };
 
 Finder.prototype.find = function() {
-  var url, id = null, params = {}, callback, query;
+  var self = this, url, id = null, params = {}, callback, query;
   if(arguments.length === 1) {
     // Single argument is the callback.
     callback = arguments[0];
@@ -34,7 +34,11 @@ Finder.prototype.find = function() {
   query = rest.get(url);
   query.addListener('complete', function(data, response){
     if(response.headers['x-total']) {
-      data.totalRecords = response.headers['x-total'];
+      var results = {};
+      results[self.model] = data;
+      results.totalRecords = response.headers['x-total'];
+      data = results;
+      console.log(data);
     }
     callback(data, response);
   });
