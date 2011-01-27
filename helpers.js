@@ -35,3 +35,11 @@ helpers.dimensions = function(dimensions) {
   });
   return dims.join(' x ');
 };
+
+Object.values = function(object) {
+  var values = [];
+  for(prop in object)
+    if(object.hasOwnProperty(prop))
+      values.push(object[prop]);
+  return values;
+};

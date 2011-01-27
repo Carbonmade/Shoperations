@@ -4,7 +4,7 @@ tr
   td
     a(href="/products/" + line.product.id)= line.product.description
     br
-    small Product specs go here
+    small= Object.values(line.product.specifications).join(' ')
   td.r
     //- If `originalPrice` is present, it means `price` is the result of an adjustment.
     - if(line.product.originalPrice)
