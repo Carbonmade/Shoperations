@@ -1,14 +1,13 @@
-h1= title
+h1= title + " (" + orders.totalRecords + ")"
 
 form.search(action="", method="get", style="overflow:hidden;")
   p(style="float:left;")
     input(type="search", placeholder="Keywords")
   p.statuses(style="float:right;")
     strong Status
-    a(href="#") All
-    a(href="#") Open
-    a(href="#") Completed
-    a(href="#") Cancelled
+    a(href="/orders") All
+    a(href="/orders/open") Open
+    a(href="/orders/processing") Processing
     
 table
   thead
