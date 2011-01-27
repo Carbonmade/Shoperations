@@ -1,4 +1,4 @@
-h1= title + " (" + orders.totalRecords + ")"
+h1= title + " (" + results.totalRecords + ")"
 
 form.search(action="", method="get", style="overflow:hidden;")
   p(style="float:left;")
@@ -19,5 +19,5 @@ table
       th Status
       th
   tbody
-    != partial('order', {collection: orders, as: "order"})
+    != partial('order', {collection: results.orders, as: "order"})
       

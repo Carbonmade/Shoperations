@@ -1,31 +1,31 @@
 var Finder = require('../finder'),
     Orders = new Finder('orders');
 
-function renderOrderList(response, title, orders) {
+function renderOrderList(response, title, results) {
   response.render('orders/index', {
     title: title,
-    orders: orders
+    results: results
   });
 };
 
 // All orders
 app.get('/orders', function(req, res){
-  Orders.find(function(orders) {
-    renderOrderList(res, 'All Orders', orders);
+  Orders.find(function(results) {
+    renderOrderList(res, 'All Orders', results);
   });
 });
 
 // Open orders
 app.get('/orders/open', function(req, res){
-  Orders.find({status: "Open"}, function(orders) {
-    renderOrderList(res, 'Open Orders', orders);
+  Orders.find({status: "Open"}, function(results) {
+    renderOrderList(res, 'Open Orders', results);
   });
 });
 
 // Processing orders
 app.get('/orders/processing', function(req, res){
-  Orders.find({status: "Processing"}, function(orders) {
-    renderOrderList(res, 'Processing Orders', orders);
+  Orders.find({status: "Processing"}, function(results) {
+    renderOrderList(res, 'Processing Orders', results);
   });
 });
 
