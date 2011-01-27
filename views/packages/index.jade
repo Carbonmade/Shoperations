@@ -30,7 +30,9 @@ table
       td
         = package.shippingMethod.name
         br
-        small= package.container.description
+        small
+          = package.container.description
+          = " (" + package.items.length + " items)"
       td
         abbr(title=address(package.origin.address))= package.origin.name
       td
