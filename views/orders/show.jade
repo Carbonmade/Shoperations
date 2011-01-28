@@ -19,6 +19,8 @@ ul.tabs
   li
     a(href="#order-packages") Packages
   li
+    a(href="#order-transactions") Transactions
+  li
     a(href="#order-history") History
     
 
@@ -60,3 +62,18 @@ ul.tabs
         td= date(event.created)
 
 #order-packages.tab-panel!= partial('packages', {object:order, as:'order'})
+
+#order-transactions.tab-panel
+  table
+    thead
+      tr
+        th Date
+        th Method
+        th Amount
+        th State
+    - each tx in order.transactions
+      tr
+        td= date(tx.created, 'short')
+        td= tx.paymentMethod.description
+        td= tx.amount.toCurrency()
+        td!= status_label(tx, 'state')

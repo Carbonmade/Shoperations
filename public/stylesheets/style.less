@@ -50,7 +50,7 @@ html, body, form, fieldset, h1, h2, h3, h4, h5, h6, p, pre, blockquote, ul, ol, 
   -webkit-font-smoothing: antialiased;
 }
 body {
-  background: #e4e4e4;
+  background: url(/images/bg.png) #eee;
 }
 .container {
   width: 960px;
@@ -77,7 +77,7 @@ a:hover {
 
 small {
   font-size: 11px;
-  color: #666;
+  color: #999;
 }
 
 table {
@@ -213,6 +213,12 @@ nav li.active a {
   color: #2e9960; 
 }
 
+.status.completed,
+.status.settled {
+  background: #cff9aa;
+  color: #5f992c; 
+}
+
 .status.unknown {
   background: #f7e99a;
   color: #aa972b; 
@@ -284,7 +290,7 @@ ul.tabs li a {
 }
 ul.tabs li a.active {
   color: #000;
-  background: url(/images/arrow_up.png) no-repeat center bottom;
+  background: url("/images/arrow_up.png") no-repeat center bottom;
 }
 .tab-panel { display: none; border-top: 3px solid #000; }
 .tab-panel.active { display: block; }

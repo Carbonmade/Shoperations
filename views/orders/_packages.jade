@@ -19,11 +19,11 @@ table
           - else 
             small Hasn't shipped
         td
-          = package.shippingMethod.name
+          = package.container.description
           br
           small
-            = package.container.description
-            = " (" + package.items.length + " items)"
+            | via
+            = package.shippingMethod.name
         td
           abbr(title=address(package.origin.address))= package.origin.name
         td

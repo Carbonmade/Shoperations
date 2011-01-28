@@ -1,12 +1,22 @@
 var helpers = module.exports = {};
 
+Number.prototype.pad = function() {
+  if(this < 10) 
+    return "0" + this;
+  return this.toString();
+};
+
 helpers.currency = function(amount) {
   return "$" + amount.toFixed(2);
 };
 
-helpers.date = function(datetime) {
+helpers.date = function(datetime, fmt) {
   if(typeof datetime !== 'object') datetime = new Date(datetime);
-  return datetime.toLocaleDateString() + " at " + datetime.toLocaleTimeString();
+  
+  if(typeof fmt === 'undefined')
+    return datetime.toLocaleDateString() + " at " + datetime.toLocaleTimeString();
+  else if(fmt === 'short')
+    return [(datetime.getMonth()+1).pad(), datetime.getDate().pad(), datetime.getFullYear()].join('-');
 };
 
 // Adds a .toCurrency() method to numbers.
@@ -44,6 +54,7 @@ Object.values = function(object) {
   return values;
 };
 
-helpers.status_label = function(object) {
-  return '<span class="status ' + object.status.toLowerCase() + '">' + object.status + '</span>';
+helpers.status_label = function(object, attr) {
+  attr = attr || 'status';
+  return '<span class="status ' + object[attr].toLowerCase() + '">' + object[attr] + '</span>';
 };

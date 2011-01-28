@@ -27,7 +27,7 @@ html, body, form, fieldset, h1, h2, h3, h4, h5, h6, p, pre, blockquote, ul, ol, 
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
 }
-body { background: #e4e4e4; }
+body { background: url(/images/bg.png) #eeeeee; }
 .container {
   width: 960px;
   margin: 0 auto;
@@ -49,7 +49,7 @@ a:hover {
 }
 small {
   font-size: 11px;
-  color: #666666;
+  color: #999999;
 }
 table {
   width: 100%;
@@ -168,6 +168,10 @@ nav li.active a {
   background: #c2fede;
   color: #2e9960;
 }
+.status.completed, .status.settled {
+  background: #cff9aa;
+  color: #5f992c;
+}
 .status.unknown {
   background: #f7e99a;
   color: #aa972b;
@@ -235,7 +239,7 @@ ul.tabs li a {
 }
 ul.tabs li a.active {
   color: #000000;
-  background: url(/images/arrow_up.png) no-repeat center bottom;
+  background: url("/images/arrow_up.png") no-repeat center bottom;
 }
 .tab-panel {
   display: none;
