@@ -1,36 +1,31 @@
-h1 Packages
-
 table
   thead
     tr
-      th ID
-      th Container
-      th Shipped via
+      th.c ID
       th Tracking #
+      th Shipment
       th Origin
       th Destination
+      th Status
+      th
   tbody
     - each package in order.packages
       tr
-        td= package.id
-        td= package.container.name
-        td= package.shippingMethod.name
-        - if(package.status === "Shipped")
-          td
+        th.c
+          a(href="/packages/" + package.id)= package.id
+        td
+          - if(package.status === "Shipped")
             a(href="#")= package.trackingNumber
-        - else 
-          td
+          - else 
             small Hasn't shipped
         td
-          address
-            = package.origin.name
-            br
-            != address(package.origin.address, '<br />')
+          = package.shippingMethod.name
+          br
+          small
+            = package.container.description
+            = " (" + package.items.length + " items)"
         td
-          address
-            = package.destination.name
-            br
-            != address(package.destination.address, '<br />')
-            - if(package.destination.phoneNumber)
-              br
-              = package.destination.phoneNumber
+          abbr(title=address(package.origin.address))= package.origin.name
+        td
+          abbr(title=address(package.destination.address))= package.destination.name
+        td!= status_label(package)

@@ -17,7 +17,10 @@ ul.tabs
   li
     a(href="#order-items") Items
   li
+    a(href="#order-packages") Packages
+  li
     a(href="#order-history") History
+    
 
 #order-items.tab-panel
   table.order
@@ -56,4 +59,4 @@ ul.tabs
         td= event.description
         td= date(event.created)
 
-//- != partial('packages', {object:order, as:'order'})
+#order-packages.tab-panel!= partial('packages', {object:order, as:'order'})
