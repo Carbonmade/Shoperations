@@ -1,4 +1,29 @@
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+/* =======================================================================
+1 - Reset
+========================================================================== */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
   margin: 0;
   padding: 0;
 }
@@ -6,36 +31,91 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-fieldset, img { border: 0; }
-address, caption, cite, code, dfn, em, strong, th, var {
+fieldset, img {
+  border: 0;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
   font-style: normal;
   font-weight: normal;
 }
-ol, ul { list-style: none; }
-caption, th { text-align: left; }
-h1, h2, h3, h4, h5, h6 {
+ol, ul {
+  list-style: none;
+}
+caption, th {
+  text-align: left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: 100%;
   font-weight: normal;
 }
-q:before { content: ''; }
-q:after { content: ''; }
-abbr, acronym { border: 0; }
-html, body, form, fieldset, h1, h2, h3, h4, h5, h6, p, pre, blockquote, ul, ol, dl, address, abbr, input, select, textarea, table, td, th {
+q:before, q:after {
+  content: '';
+}
+abbr, acronym {
+  border: 0;
+}
+/* =======================================================================
+2 - LESS Mixins
+========================================================================== */
+/* =======================================================================
+3 - General
+========================================================================== */
+html,
+body,
+form,
+fieldset,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+blockquote,
+ul,
+ol,
+dl,
+address,
+abbr,
+input,
+select,
+textarea,
+table,
+td,
+th {
   font-family: "Comic Sans", "Lucida Grande", "Trebuchet MS", Helvetica, Arial, sans-serif;
-  color: #555555;
+  color: #555;
   font-size: 13px;
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
 }
-body { background: url(/images/bg.png) #eeeeee; }
+body {
+  background: url(/images/bg.png) #eeeeee;
+}
 .container {
   width: 960px;
   margin: 0 auto;
   overflow: hidden;
 }
-strong { font-weight: bold; }
+strong {
+  font-weight: bold;
+}
 abbr {
-  border-bottom: 1px dotted #999999;
+  border-bottom: 1px dotted #999;
   cursor: help;
 }
 a {
@@ -44,70 +124,81 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #000000;
+  color: #000;
   text-decoration: underline;
 }
 small {
   font-size: 11px;
-  color: #999999;
+  color: #999;
 }
 table {
   width: 100%;
   margin-bottom: 32px;
 }
-table th {
-  border-bottom: 1px solid #f2f2f2;
-  padding: 8px;
-}
-table td {
+table th, table td {
   border-bottom: 1px solid #f2f2f2;
   padding: 8px;
 }
 table th {
-  color: #444444;
+  color: #444;
   font-size: 12px;
   line-height: 1;
   background: #f7f7f7;
 }
-address { font-size: 12px; }
+address {
+  font-size: 12px;
+}
 small address {
   font-size: 11px;
   line-height: 16px;
   color: #666666;
 }
-.l { text-align: left; }
-.c { text-align: center; }
-.r { text-align: right; }
+.l {
+  text-align: left;
+}
+.c {
+  text-align: center;
+}
+.r {
+  text-align: right;
+}
+/* =======================================================================
+4 - Header & Navigation
+========================================================================== */
 header {
   background: #000000;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#282828));
   background-image: -moz-linear-gradient(top, #000000, #282828);
-  padding: 32px 0 0 0;
+  padding: 22px 0 0 0;
 }
-header .container { width: 992px; }
+header .container {
+  width: 992px;
+}
 header h1 {
-  color: #ffffff;
+  color: #fff;
   font-weight: bold;
   float: left;
   font-size: 16px;
 }
 header p {
-  color: #999999;
+  color: #999;
   float: right;
 }
 nav {
   clear: both;
-  padding-top: 16px;
+  padding-top: 26px;
   overflow: hidden;
 }
-nav li { float: left; }
+nav li {
+  float: left;
+}
 nav li a {
   display: block;
   font-weight: normal;
-  background: #e4e4e4;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e4e4e4), to(#a4a4a4));
-  background-image: -moz-linear-gradient(top, #e4e4e4, #a4a4a4);
-  color: #666666;
+  background: #444444;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#444444), to(#333333));
+  background-image: -moz-linear-gradient(top, #444444, #333333);
+  color: #777;
   padding: 8px 16px;
   margin-right: 4px;
   -webkit-border-top-left-radius: 10px;
@@ -116,34 +207,39 @@ nav li a {
   -moz-border-radius-topright: 10px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  -webkit-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.15s;
+  -moz-transition-duration: 0.15s;
+  transition-duration: 0.15s;
   border: none;
 }
 nav li a:hover {
-  background: #ffffff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#c9c9c9));
-  background-image: -moz-linear-gradient(top, #ffffff, #c9c9c9);
+  background: #666666;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#666666), to(#555555));
+  background-image: -moz-linear-gradient(top, #666666, #555555);
   text-decoration: none;
-  color: #333333;
-  padding-bottom: 12px;
-  margin-top: -4px;
+  color: #fff;
+  padding-bottom: 14px;
+  margin-top: -6px;
 }
 nav li.active a {
-  background: #ffffff;
-  color: #000000;
+  background: #fff;
+  color: #000;
   padding-top: 12px;
-  padding-bottom: 12px;
-  margin-top: -8px;
+  padding-bottom: 16px;
+  margin-top: -12px;
   font-weight: bold;
 }
+/* =======================================================================
+4 - Main
+========================================================================== */
 #main {
-  background: #ffffff;
+  background: #fff;
   margin-bottom: 32px;
   padding: 16px;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 #main h1 {
-  color: #000000;
+  color: #000;
   font-size: 18px;
   line-height: 24px;
   font-weight: bold;
@@ -152,6 +248,7 @@ nav li.active a {
   background-image: -moz-linear-gradient(top, #eeeeee, #ffffff);
   padding: 12px 6px;
 }
+/* Status labels */
 .status {
   font-size: 12px;
   padding: 4px 12px;
@@ -176,7 +273,9 @@ nav li.active a {
   background: #f7e99a;
   color: #aa972b;
 }
-table.order tbody tr:last-child td { border-bottom: 5px solid #eeeeee; }
+table.order tbody tr:last-child td {
+  border-bottom: 5px solid #eee;
+}
 tr.summary td {
   font-weight: bold;
   border-bottom: none;
@@ -195,54 +294,62 @@ form.search {
   margin: 8px 0 0 0;
   text-align: right;
 }
-form.search select { margin: 0 10px; }
-form.search input { margin: 0 10px; }
+form.search select, form.search input {
+  margin: 0 10px;
+}
 form.search .statuses {
   font-size: 11px;
   line-height: 21px;
 }
 form.search .statuses strong {
-  color: #bbbbbb;
+  color: #bbb;
   display: block;
   float: left;
 }
 form.search .statuses a {
   display: block;
   float: left;
-  background: #000000;
+  background: #000;
   border-radius: 40px;
   -webkit-border-radius: 40px;
   -moz-border-radius: 40px;
   padding: 0 10px;
   margin-left: 5px;
-  color: #888888;
+  color: #888;
 }
 form.search .statuses a:hover {
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
 }
 form.search .statuses a.active {
-  background: #000000;
-  color: #ffffff;
+  background: #000;
+  color: #fff;
 }
+/* Tabs */
 ul.tabs {
   overflow: hidden;
   margin-bottom: -1px;
 }
-ul.tabs li { float: left; }
-ul.tabs li a { display: block; }
+ul.tabs li {
+  float: left;
+}
+ul.tabs li a {
+  display: block;
+}
 ul.tabs li a {
   padding: 0 15px 15px 15px;
   font-size: 12px;
-  color: #999999;
+  color: #999;
   margin-right: 5px;
 }
 ul.tabs li a.active {
-  color: #000000;
+  color: #000;
   background: url("/images/arrow_up.png") no-repeat center bottom;
 }
 .tab-panel {
   display: none;
-  border-top: 3px solid #000000;
+  border-top: 3px solid #000;
 }
-.tab-panel.active { display: block; }
+.tab-panel.active {
+  display: block;
+}
