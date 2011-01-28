@@ -10,29 +10,35 @@ function renderOrderList(response, title, results) {
 
 // All orders
 app.get('/orders', function(req, res){
-  Orders.find(function(results) {
-    renderOrderList(res, 'All Orders', results);
+  Orders.find(req.query, function(results) {
+    renderOrderList(res, 'All orders', results);
   });
 });
 
 // Open orders
 app.get('/orders/open', function(req, res){
-  Orders.find({status: "Open"}, function(results) {
-    renderOrderList(res, 'Open Orders', results);
+  var params = req.query;
+  params.status = "Open";
+  Orders.find(params, function(results) {
+    renderOrderList(res, 'Open orders', results);
   });
 });
 
 // Processing orders
 app.get('/orders/processing', function(req, res){
-  Orders.find({status: "Processing"}, function(results) {
-    renderOrderList(res, 'Processing Orders', results);
+  var params = req.query;
+  params.status = "Processing";
+  Orders.find(params, function(results) {
+    renderOrderList(res, 'Processing orders', results);
   });
 });
 
 // Completed orders
 app.get('/orders/completed', function(req, res){
-  Orders.find({status: "Completed"}, function(results) {
-    renderOrderList(res, 'Completed Orders', results);
+  var params = req.query;
+  params.status = "Completed";
+  Orders.find(params, function(results) {
+    renderOrderList(res, 'Completed orders', results);
   });
 });
 
