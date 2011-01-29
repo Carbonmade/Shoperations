@@ -48,13 +48,40 @@ helpers.dimensions = function(dimensions) {
 
 Object.values = function(object) {
   var values = [];
-  for(prop in object)
-    if(object.hasOwnProperty(prop))
-      values.push(object[prop]);
+  for(prop in object) {
+    if(object.hasOwnProperty(prop)) {
+      values.push(object[prop]); 
+    } 
+  }
   return values;
 };
 
-helpers.status_label = function(object, attr) {
-  attr = attr || 'status';
-  return '<span class="status ' + object[attr].toLowerCase() + '">' + object[attr] + '</span>';
+helpers.status_label = function(object) {
+  var state = object.state || "Unknown";
+  return '<span class="status ' + state.toLowerCase() + '">' + state + '</span>';
+};
+
+// Tests if a value is blank.
+helpers.isBlank = function(value) {
+  if(value === null || typeof value === 'undefined') return true;
+  
+  // If value is an Object, check for "blankness" by
+  // seeing if it has any properties.
+  if(typeof value === 'object') {
+    value = Object.keys(value);
+  }
+  
+  // Strings & Arrays
+  if(typeof value.length !== 'undefined') {
+    if(typeof value === 'string') {
+      return value.trim().length === 0;
+    } else {
+      return value.length === 0;
+    }
+  }
+    
+};
+
+helpers.isPresent = function(value) {
+  return !helpers.isBlank(value);
 };
