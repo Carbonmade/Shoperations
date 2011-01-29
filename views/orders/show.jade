@@ -29,7 +29,7 @@ ul.tabs
     thead
       tr
         th.c
-          input(type="checkbox")
+          input(type="checkbox", class="select-all", value="order-items")
         th Description
         th.r Price
         th.r Quantity
@@ -47,7 +47,7 @@ ul.tabs
       tr.summary
         td(colspan=2)
           small
-            a(href="#") Refund selected items
+            a(href="#refund-order-items") Refund selected items
         td(colspan=4, style="text-align:right;") Total:
         td.r= order.amount.toCurrency()
 
@@ -76,4 +76,4 @@ ul.tabs
         td= date(tx.created, 'short')
         td= tx.paymentMethod.description
         td= tx.amount.toCurrency()
-        td!= status_label(tx, 'state')
+        td!= status_label(tx)

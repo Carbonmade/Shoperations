@@ -1,6 +1,14 @@
-tr
+- refunded = isPresent(line.refunded)
+- classes = ['order-item', 'sale']
+- if(refunded)
+  - classes.push('refunded')
+
+tr(class=classes.join(' '))
   th.c
-    input(type="checkbox")
+    - if(refunded)
+      abbr(title="Refunded " + date(line.refunded)) X
+    - else
+      input(type="checkbox", name='order-items', value=line.id)
   td
     a(href="/products/" + line.product.id)= line.product.description
     br
@@ -24,7 +32,10 @@ tr
   - else
     td.r -
   td.r
-    strong= (line.amount || "Unknown!").toCurrency()
+    - if(isPresent(line.refunded))
+      span.amount(title="Refunded " + date(line.refunded))= line.amount.toCurrency()
+    - else
+      strong.amount= line.amount.toCurrency()
   td.c
     small
       a(href="#") History

@@ -48,3 +48,8 @@ app.get('/orders/:id', function(req, res){
     res.render('orders/show', {title: 'Order Details', order: order});
   });
 });
+
+// Refund order lines
+app.post('/orders/:id/refund', function(req, res){
+  res.send("OK!");
+});
