@@ -1,8 +1,12 @@
 var rest = require('restler'),
-    Finder = module.exports = function(model) { this.model = model; };
+    Finder = module.exports = function(model) {
+      this.model = model;
+      this.api = rest;
+    };
 
 Finder.prototype.buildURL = function(id, params) {
   var url = "http://store.carbonmade.net/" + this.model;
+  params = params || {};
   if(id) url += "/" + id;
   if(Object.keys(params).length > 0) {
     var qs = [];
