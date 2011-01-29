@@ -18,7 +18,7 @@ app.get('/orders', function(req, res){
 // Open orders
 app.get('/orders/open', function(req, res){
   var params = req.query;
-  params.status = "Open";
+  params.state = "Open";
   Orders.find(params, function(results) {
     renderOrderList(res, 'Open orders', results);
   });
@@ -27,7 +27,7 @@ app.get('/orders/open', function(req, res){
 // Processing orders
 app.get('/orders/processing', function(req, res){
   var params = req.query;
-  params.status = "Processing";
+  params.state = "Processing";
   Orders.find(params, function(results) {
     renderOrderList(res, 'Processing orders', results);
   });
@@ -36,7 +36,7 @@ app.get('/orders/processing', function(req, res){
 // Completed orders
 app.get('/orders/completed', function(req, res){
   var params = req.query;
-  params.status = "Completed";
+  params.state = "Completed";
   Orders.find(params, function(results) {
     renderOrderList(res, 'Completed orders', results);
   });
