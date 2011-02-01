@@ -15,10 +15,18 @@ var Collection = exports = module.exports = function(model) {
   this.api = require('restler');
 };
 
-Collection.prototype.find = function(params, callback) {
-  params = params || {};
-  var collection = this,
-      url = this.url + '/' + Object.toQueryString(params);
+Collection.prototype.find = function() {
+  var collection = this, params, callback, url;
+  
+  if(arguments.length === 2) {
+    params = arguments[0];
+    callback = arguments[1];
+  } else {
+    params = {};
+    callback = arguments[0];
+  }
+  url = this.url + '/' + Object.toQueryString(params);
+  
   console.log("GET: " + url);
   this.api.get(url).addListener('complete', function(data, response) {
     var results = {records:[], params:params};
