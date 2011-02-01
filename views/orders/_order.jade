@@ -1,6 +1,5 @@
 tr
-  th.c
-    a(href="/orders/" + order.id)= order.id
+  th.c!= order.link()
   td
     a(href="/customers/" + order.customer.id)= order.customer.name
   td

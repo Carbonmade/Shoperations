@@ -3,10 +3,15 @@
  * Module dependencies.
  */
 
-var express = require('express'),
+var path = require('path'),
+    express = require('express'),
     helpers = require('./helpers'),
     nav = require('./nav');
+
 app = module.exports = express.createServer();
+
+// Make all the modules in vendor/ loadable.
+require.paths.unshift(path.join(__dirname, "vendor"));
 
 // Configuration
 

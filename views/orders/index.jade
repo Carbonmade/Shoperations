@@ -11,7 +11,7 @@ form.search(action="", method="get", style="overflow:hidden;")
     strong Status
     != partial('order_filters', {object: results.params, as: "params"})
     
-- if(results.orders.length > 0)
+- if(results.records.length > 0)
   table
     thead
       tr
@@ -22,6 +22,6 @@ form.search(action="", method="get", style="overflow:hidden;")
         th Status
         th
     tbody
-      != partial('order', {collection: results.orders, as: "order"})
+      != partial('order', {collection: results.records, as: "order"})
 - else
   p(style="font-size:18px;text-align:center;padding: 50px;") No results!
