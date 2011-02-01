@@ -10,3 +10,11 @@ Order.prototype = new Model;
 Order.prototype.modelName = 'Order';
 
 Order.objects = new Collection(Order);
+
+Order.prototype.refund = function(lines, callbacks) {
+  var refundURL = [Order.objects.url, this.id, 'refunds'].join('/');
+  console.log('PUT: ' + refundURL);
+  Order.objects.api.post(refundURL, {data: {lines:lines}})
+    .addListener('success', callbacks.success)
+    .addListener('error', callbacks.error);
+};

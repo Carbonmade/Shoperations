@@ -51,5 +51,14 @@ app.get('/orders/:id', function(req, res){
 
 // Refund order lines
 app.post('/orders/:id/refund', function(req, res){
-  res.send("OK!");
+  Order.objects.get(req.params.id, function(order) {
+    order.refund(req.body.lines.split('-'), {
+      success: function() {
+        res.send("Ok!");
+      },
+      error: function() {
+        res.send("It didn't work. /refunds isn't implemented yet.");
+      }
+    });
+  });
 });

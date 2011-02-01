@@ -37,13 +37,8 @@ $(function() {
         $.ajax({
           url: '/orders/1/refund',
           type: 'POST',
-          data: {lines: line_ids},
-          success: function(data, text) {
-            alert("Success!");
-          },
-          error: function() {
-            alert("Error!");
-          }
+          data: {lines: $.makeArray(line_ids).join('-')},
+          success: function(d, t) { alert(d); }
         });
       }
     }
