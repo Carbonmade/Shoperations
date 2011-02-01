@@ -26,7 +26,7 @@ Number.prototype.toCurrency = function() {
 };
 
 String.prototype.toCurrency = function() {
-  return "$" + this;
+  return Number(this.split(' ')[0]).toCurrency();
 };
 
 // Formats lines of an address using a join character.

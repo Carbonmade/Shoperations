@@ -4,5 +4,5 @@ tr
     a(href="/customers/" + order.customer.id)= order.customer.name
   td
     small= date(order.created)
-  td(style="padding-right:40px;")= "$" + order.amount
+  td(style="padding-right:40px;")= order.amount.toCurrency()
   td!= status_label(order)
