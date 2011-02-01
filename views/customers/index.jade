@@ -12,10 +12,8 @@ table
       th Name
       th Orders
   tbody
-    - each customer in results.customers
+    - each customer in results.records
       tr
-        td= customer.id
-        td
-          a(href="/customers/" + customer.id)= customer.name
-
+        td!= customer.link()
+        td= customer.name
         td= (customer.orders ? customer.orders.length : 0)
