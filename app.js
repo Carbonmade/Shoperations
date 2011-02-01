@@ -20,6 +20,8 @@ app.configure(function(){
   app.set('view engine', 'jade');
   app.use(express.bodyDecoder());
   app.use(express.methodOverride());
+  app.use(express.cookieDecoder());
+  app.use(express.session());
   app.use(express.compiler({ src: __dirname + '/public', enable: ['less'] }));
   app.use(app.router);
   app.use(express.staticProvider(__dirname + '/public'));
