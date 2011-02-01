@@ -1,43 +1,27 @@
-h1= title
+h1= title + " (" + results.totalRecords + ")"
 
 form.search(action="", method="get")
   p
-    select(name="status")
-      optgroup(label="Package Status")
-        option - Any status -
-        option Open
-        option Shipped
-        option Delivered
-    input(type="search", placeholder="Keywords")
-    input(type="submit", value="Search!")
+    input(type="search", placeholder="Keywords", name="q")
 
 table
   thead
     tr
+      th ID
       th Tracking #
       th Shipment
-      th Origin
+      th Origin 
       th Destination
       th Status
-      th
   tbody
-    - each package in packages
-      td
-        - if(package.status === 'Shipped')
-          a(href="#")= package.trackingNumber
-        - else
-          small Not shipped
-      td
-        = package.shippingMethod.name
-        br
-        small
-          = package.container.description
-          = " (" + package.items.length + " items)"
-      td
-        abbr(title=address(package.origin.address))= package.origin.name
-      td
-        abbr(title=address(package.destination.address))= package.destination.name
-      td
-        span.status= package.status
-      td
-        a(href="/packages/" + package.id) Details &raquo;
+    - each package in results.records
+      tr
+        td!= package.link()
+        td!= package.trackingNumber ? package.trackingNumber : '<small>Not shipped</small>'
+        td
+          != package.shippingMethod ? package.shippingMethod.name : '<small>Unknown</small>'
+          br
+          small= package.container.description
+        td!= package.origin ? package.origin.name : '<small>Unknown</small>'
+        td!= package.destination ? package.destination.name : '<small>Unknown</small>'
+        td!= status_label(package)

@@ -1,19 +1,19 @@
-var cm = require('../carbonmade');
+var Package = require('../models/package');
 
 app.get('/packages', function(req, res){
-  cm.get('packages', 1, function(_package) {
+  Package.objects.find(req.query, function(results) {
     res.render('packages/index', {
       title: 'Packages',
-      packages: [_package]
+      results: results
     });
   });
 });
 
 app.get('/packages/:id', function(req, res){
-  cm.get('packages', req.params.id, function(_package) {
+  Package.objects.get(req.params.id, function(result) {
     res.render('packages/show', {
       title: 'Package Details',
-      "package": _package
+      "package": result
     });
   });
 });
