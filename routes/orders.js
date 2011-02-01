@@ -49,6 +49,19 @@ app.get('/orders/:id', function(req, res){
   });
 });
 
+// Cancel an order details
+app.post('/orders/:id/cancel', function(req, res){
+  Order.objects.get(req.params.id, function(order) {
+    order.cancel({
+      success: function() {
+        req.flash('success', 'Order was canceled!');
+        res.redirect('/orders/' + order.id);
+      },
+      error: function() { res.send("Error!"); }
+    });
+  });
+});
+
 // Refund order lines
 app.post('/orders/:id/refund', function(req, res){
   Order.objects.get(req.params.id, function(order) {

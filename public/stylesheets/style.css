@@ -154,6 +154,12 @@ nav li.active a {
   background-image: -moz-linear-gradient(top, #eeeeee, #ffffff);
   padding: 12px 6px;
 }
+.message {
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
 .status {
   font-size: 12px;
   padding: 4px 12px;
@@ -170,7 +176,7 @@ nav li.active a {
   background: #c2fede;
   color: #2e9960;
 }
-.status.completed, .status.settled, .status.shipped {
+.status.completed, .status.settled, .status.shipped, .success.message {
   background: #cff9aa;
   color: #5f992c;
 }

@@ -1,4 +1,7 @@
 $(function() {
+  /****************************************************************************************************************
+  ****  General purpose
+  ****************************************************************************************************************/
 
   // Tabs
   $('ul.tabs li a').click(function() {
@@ -24,18 +27,23 @@ $(function() {
       .attr('checked', this.checked ? 'checked' : '');
   });
   
+  
+  
+  /****************************************************************************************************************
+  ****  Order Details
+  ****************************************************************************************************************/
+  
   // Refunding selected items.
-  $('a[href="#refund-order-items"]').click(function() {
-    var line_ids = $('input[type="checkbox"][name="order-items"]:checked').map(function() {
-      return this.value;
-    });
+  $('a[rel="refund-order-items"]').click(function() {
+    var link = $(this),
+        line_ids = $('input[type="checkbox"][name="order-items"]:checked').map(function() { return this.value; });
+
     if(line_ids.length === 0) {
       alert("You haven't selected any items to refund.");
     } else {
       if(confirm("Are you sure you want to refund " + line_ids.length + " item(s)?\n\nThere's no undo!")) {
-        var order_id;
         $.ajax({
-          url: '/orders/1/refund',
+          url: link.attr('href'),
           type: 'POST',
           data: {lines: $.makeArray(line_ids).join('-')},
           success: function(d, t) { alert(d); }
@@ -44,5 +52,12 @@ $(function() {
     }
     return false;
   });
+
+  $('#cancel-order-form').submit(function() {
+    if(!confirm("Are you sure you want to cancel this order?")) {
+      return false;
+    }
+  });
+
 
 });

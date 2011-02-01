@@ -15,6 +15,10 @@ var Collection = exports = module.exports = function(model) {
   this.api = require('restler');
 };
 
+Collection.prototype.urlFor = function(object) {
+  return [this.url, object.id].join('/');
+};
+
 Collection.prototype.find = function() {
   var collection = this, params, callback, url;
   
@@ -43,4 +47,10 @@ Collection.prototype.get = function(id, callback) {
   this.api.get(this.url + '/' + id).addListener('complete', function(record, response) {
     callback(new collection.model(record));
   });
+};
+
+Collection.prototype.update = function(object, attributes, callbacks) {
+  this.api.put(this.urlFor(object), {data:attributes})
+    .addListener('success', callbacks.success)
+    .addListener('error', callbacks.error);
 };

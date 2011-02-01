@@ -12,4 +12,9 @@ html
         p Hola, Carlos!
         nav
           ul!= partial('nav')
-    #main.container!= body
+    #main.container
+      - successMessages = this.flash('success')
+      - if(successMessages.length)
+        - for(var i=0; i<successMessages.length; i++)
+          p.message.success= successMessages[i]
+      != body

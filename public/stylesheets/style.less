@@ -199,7 +199,14 @@ nav li.active a {
   padding: 12px 6px;
 }
 
-/* Status labels */
+/* Status labels & messages */
+.message {
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
 .status {
   font-size: 12px;
   padding: 4px 12px;
@@ -219,7 +226,8 @@ nav li.active a {
 
 .status.completed,
 .status.settled,
-.status.shipped {
+.status.shipped,
+.success.message {
   background: #cff9aa;
   color: #5f992c; 
 }

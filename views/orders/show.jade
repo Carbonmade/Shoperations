@@ -47,7 +47,7 @@ ul.tabs
       tr.summary
         td(colspan=2)
           small
-            a(href="#refund-order-items") Refund selected items
+            a(href='/orders/' + order.id + '/refund', rel="refund-order-items") Refund selected items
         td(colspan=4, style="text-align:right;") Total:
         td.r= order.amount.toCurrency()
 
@@ -77,3 +77,8 @@ ul.tabs
         td= tx.paymentMethod.description
         td= tx.amount.toCurrency()
         td!= status_label(tx)
+        
+div(style="background:#333;padding:10px;")
+  - if(order.canCancel())
+    form(action="/orders/" + order.id + "/cancel", method="post", id="cancel-order-form")
+      input(type="submit", name="cancel", value="Cancel Order")
