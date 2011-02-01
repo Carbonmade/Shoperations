@@ -1,13 +1,8 @@
-var Finder = require('../finder'),
-    Products = new Finder('products');
+var Product = require('../models/product');
 
 // All Products
 app.get('/products', function(req, res){
-  // TODO: Product list currently doesn't send x-total headers,
-  // which means `results` is simply the list of orders, NOT
-  // an actual results object.
-  Products.find(function(results) {
-    var results = {products: results, totalRecords: results.length};
+  Product.objects.find(req.query, function(results) {
     res.render('products/index', {
       title: "Products",
       results: results
