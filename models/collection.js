@@ -50,7 +50,11 @@ Collection.prototype.get = function(id, callback) {
 };
 
 Collection.prototype.update = function(object, attributes, callbacks) {
-  this.api.put(this.urlFor(object), {data:attributes})
+  var url = this.urlFor(object),
+      data = JSON.stringify(attributes);
+  console.log("PUT: " + url);
+  console.log("\tdata: " + data);
+  this.api.put(url, {data:data})
     .addListener('success', callbacks.success)
     .addListener('error', callbacks.error);
 };

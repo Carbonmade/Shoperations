@@ -180,6 +180,10 @@ nav li.active a {
   background: #cff9aa;
   color: #5f992c;
 }
+.status.canceled {
+  background: rgba(255, 0, 0, 0.75);
+  color: #ffffff;
+}
 .status.delivered {
   background: #477321;
   color: #e1f3d3;

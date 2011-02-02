@@ -28,6 +28,12 @@ $(function() {
   });
   
   
+  $('input[type="submit"].confirm').click(function() {
+    if(!confirm($(this).val() + ": Are you sure you sure?")) {
+      return false;
+    }
+  });
+  
   
   /****************************************************************************************************************
   ****  Order Details
@@ -52,12 +58,5 @@ $(function() {
     }
     return false;
   });
-
-  $('#cancel-order-form').submit(function() {
-    if(!confirm("Are you sure you want to cancel this order?")) {
-      return false;
-    }
-  });
-
 
 });

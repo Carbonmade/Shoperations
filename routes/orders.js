@@ -50,14 +50,27 @@ app.get('/orders/:id', function(req, res){
 });
 
 // Cancel an order details
-app.post('/orders/:id/cancel', function(req, res){
+app.post('/orders/:id', function(req, res){
   Order.objects.get(req.params.id, function(order) {
-    order.cancel({
-      success: function() {
-        req.flash('success', 'Order was canceled!');
+    var action, message;
+    if(req.body.action === 'Cancel Order') {
+      action = order.cancel;
+      message = "Order was canceled!";
+    } else if(req.body.action === 'Accept Order') {
+      action = order.accept;
+      message = "Order was accepted!";
+    } else if(req.body.action === 'Complete Order') {
+      action = order.complete;
+      message = "Order was completed!";
+    }
+    action.call(order, {
+      success: function(data, response) {
+        req.flash('success', message);
         res.redirect('/orders/' + order.id);
       },
-      error: function() { res.send("Error!"); }
+      error: function(data, response) {
+        res.send("Error!");
+      }
     });
   });
 });

@@ -79,6 +79,10 @@ ul.tabs
         td!= status_label(tx)
         
 div(style="background:#333;padding:10px;")
-  - if(order.canCancel())
-    form(action="/orders/" + order.id + "/cancel", method="post", id="cancel-order-form")
-      input(type="submit", name="cancel", value="Cancel Order")
+  form(action="/orders/" + order.id, method="post", id="update-order-status-form")
+    - if(order.canAccept())
+      input(type="submit", name="action", value="Accept Order")
+    - if(order.canComplete())
+      input(type="submit", name="action", value="Complete Order")
+    - if(order.canCancel())
+      input(type="submit", name="action", value="Cancel Order", class="confirm")

@@ -19,8 +19,16 @@ Order.prototype.refund = function(lines, callbacks) {
     .addListener('error', callbacks.error);
 };
 
+Order.prototype.canAccept = function() {
+  return this.state === 'Open';
+};
+
 Order.prototype.canCancel = function() {
-  return this.state !== "Completed";
+  return this.state === "Open" || this.state === "Processing";
+};
+
+Order.prototype.canComplete = function() {
+  return this.state === "Processing";
 };
 
 Order.prototype.cancel = function(callbacks) {
@@ -28,4 +36,18 @@ Order.prototype.cancel = function(callbacks) {
     throw "This order can't be canceled.";
   }
   Order.objects.update(this, {state:'Canceled'}, callbacks);
+};
+
+Order.prototype.accept = function(callbacks) {
+  if(!this.canAccept()) {
+    throw "This order can't be accepted.";
+  }
+  Order.objects.update(this, {state:'Processing'}, callbacks);
+};
+
+Order.prototype.complete = function(callbacks) {
+  if(!this.canComplete()) {
+    throw "This order can't be completed.";
+  }
+  Order.objects.update(this, {state:'Completed'}, callbacks);
 };
