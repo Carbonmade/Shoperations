@@ -9,6 +9,7 @@ def production():
 def deploy():
     local('git push origin master')
     run('cd /home/ubuntu/Shoperations && git pull origin master')
+    restart()
 
 def restart():
     run('/home/ubuntu/node/local/bin/forever stopall')
