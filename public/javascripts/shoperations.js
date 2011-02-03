@@ -27,36 +27,12 @@ $(function() {
       .attr('checked', this.checked ? 'checked' : '');
   });
   
-  
+
+  // Show a confirmation alert on some submit buttons.
   $('input[type="submit"].confirm').click(function() {
     if(!confirm($(this).val() + ": Are you sure you sure?")) {
       return false;
     }
-  });
-  
-  
-  /****************************************************************************************************************
-  ****  Order Details
-  ****************************************************************************************************************/
-  
-  // Refunding selected items.
-  $('a[rel="refund-order-items"]').click(function() {
-    var link = $(this),
-        line_ids = $('input[type="checkbox"][name="order-items"]:checked').map(function() { return this.value; });
-
-    if(line_ids.length === 0) {
-      alert("You haven't selected any items to refund.");
-    } else {
-      if(confirm("Are you sure you want to refund " + line_ids.length + " item(s)?\n\nThere's no undo!")) {
-        $.ajax({
-          url: link.attr('href'),
-          type: 'POST',
-          data: {lines: $.makeArray(line_ids).join('-')},
-          success: function(d, t) { alert(d); }
-        });
-      }
-    }
-    return false;
   });
 
 });

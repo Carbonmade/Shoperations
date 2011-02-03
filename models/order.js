@@ -27,6 +27,16 @@ Order.objects.refundLines = function(lines, callbacks) {
     .addListener('error', callbacks.error);
 };
 
+Order.prototype.hasRefundableItems = function() {
+  var n = this.lines.length;
+  for(var i=0; i<n; i++) {
+    if(typeof this.lines[i].refunded === 'undefined') {
+      return true;
+    }
+  }
+  return false;
+};
+
 Order.prototype.canAccept = function() {
   return this.state === 'Open';
 };

@@ -43,14 +43,24 @@ app.get('/orders/completed', function(req, res){
 });
 
 // Refund order lines
-app.post('/orders/refund', function(req, res){
-  Order.objects.refundLines(req.body.lines.split('-'), {
+app.post('/orders/:id/refund', function(req, res){
+  var lines = req.body['order-items'] || [];
+  if(typeof lines === 'string') {
+    lines = [lines];
+  }
+
+  if(lines.length === 0) {
+    req.flash('error', "You didn't select any items!");
+    res.redirect('/orders/' + req.params.id);
+  }
+
+  Order.objects.refundLines(lines, {
     success: function() {
-      res.send("Ok!");
+      req.flash('success', 'Items were refunded!');
+      res.redirect('/orders/' + req.params.id);
     },
     error: function(data, response) {
-      console.log(data);
-      res.send("It didn't work. /refunds isn't implemented yet.");
+      res.send(data);
     }
   });
 });

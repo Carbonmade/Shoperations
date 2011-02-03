@@ -25,31 +25,33 @@ ul.tabs
     
 
 #order-items.tab-panel
-  table.order
-    thead
-      tr
-        th.c
-          input(type="checkbox", class="select-all", value="order-items")
-        th Description
-        th.r Price
-        th.r Quantity
-        th.r Discount
-        th.r Tax
-        th.r Total
-        th
-    tbody
-      - each line in order.lines
-        - if(line.type === 'Sale')
-          != partial('line', {object:line, as:'line'})
-        - else
-          != partial('freight', {object:line, as:'freight'})
-    tfoot
-      tr.summary
-        td(colspan=2)
-          small
-            a(href='/orders/refund', rel="refund-order-items") Refund selected items
-        td(colspan=4, style="text-align:right;") Total:
-        td.r= order.amount.toCurrency()
+  form(action="/orders/" + order.id + "/refund", method="post")
+    table.order
+      thead
+        tr
+          th.c
+            - if(order.hasRefundableItems())
+              input(type="checkbox", class="select-all", value="order-items")
+          th Description
+          th.r Price
+          th.r Quantity
+          th.r Discount
+          th.r Tax
+          th.r Total
+          th
+      tbody
+        - each line in order.lines
+          - if(line.type === 'Sale')
+            != partial('line', {object:line, as:'line'})
+          - else
+            != partial('freight', {object:line, as:'freight'})
+      tfoot
+        tr.summary
+          td(colspan=2)
+            - if(order.hasRefundableItems())
+              input(type="submit", value="Refund Items", class="confirm")
+          td(colspan=4, style="text-align:right;") Total:
+          td.r= order.amount.toCurrency()
 
 #order-history.tab-panel
   table

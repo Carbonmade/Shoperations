@@ -13,8 +13,12 @@ html
         nav
           ul!= partial('nav')
     #main.container
-      - successMessages = this.flash('success')
-      - if(successMessages.length)
-        - for(var i=0; i<successMessages.length; i++)
-          p.message.success= successMessages[i]
+      - messages = this.flash('success')
+      - if(messages.length)
+        - for(var i=0; i<messages.length; i++)
+          p.message.success= messages[i]
+      - messages = this.flash('error')
+      - if(messages.length)
+        - for(var i=0; i<messages.length; i++)
+          p.message.error= messages[i]
       != body
