@@ -1,10 +1,9 @@
 import os
 from fabric.api import run, sudo, put, env, local
 
-def production():
-    env.hosts = ['ec2-204-236-210-184.compute-1.amazonaws.com']
-    env.user = "ubuntu"
-    env.key_filename = [os.path.join(os.getenv("HOME"), '.ssh', 'node.pem')]
+env.hosts = ['ec2-204-236-210-184.compute-1.amazonaws.com']
+env.user = "ubuntu"
+env.key_filename = [os.path.join(os.getenv("HOME"), '.ssh', 'node.pem')]
 
 def deploy():
     local('git push origin master')
