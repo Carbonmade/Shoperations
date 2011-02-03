@@ -11,10 +11,18 @@ Order.prototype.modelName = 'Order';
 
 Order.objects = new Collection(Order);
 
-Order.prototype.refund = function(lines, callbacks) {
-  var refundURL = [Order.objects.urlFor(this), 'refunds'].join('/');
-  console.log('PUT: ' + refundURL);
-  Order.objects.api.post(refundURL, {data: {lines:lines}})
+Order.objects.refundLines = function(lines, callbacks) {
+  // var refundURL = [this.url, 'refunds'].join('/');
+  var refundURL = 'http://store.carbonmade.net/refunds',
+      data = [],
+      dataString;
+  lines.forEach(function(lineID) {
+    data.push({id: Number(lineID)});
+  });
+  dataString = JSON.stringify({lines:data});
+  console.log('POST: ' + refundURL);
+  console.log('\tdata: ' + dataString);
+  Order.objects.api.post(refundURL, {data: dataString})
     .addListener('success', callbacks.success)
     .addListener('error', callbacks.error);
 };

@@ -47,7 +47,7 @@ ul.tabs
       tr.summary
         td(colspan=2)
           small
-            a(href='/orders/' + order.id + '/refund', rel="refund-order-items") Refund selected items
+            a(href='/orders/refund', rel="refund-order-items") Refund selected items
         td(colspan=4, style="text-align:right;") Total:
         td.r= order.amount.toCurrency()
 
@@ -61,7 +61,7 @@ ul.tabs
         td= event.description
         td= date(event.created)
 
-#order-packages.tab-panel!= partial('packages', {object:order, as:'order'})
+//- #order-packages.tab-panel!= partial('packages', {object:order, as:'order'})
 
 #order-transactions.tab-panel
   table

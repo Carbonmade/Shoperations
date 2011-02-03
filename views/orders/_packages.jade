@@ -23,7 +23,7 @@ table
           br
           small
             | via
-            = package.shippingMethod.name
+            = package.shippingMethod ? package.shippingMethod.name : 'Unknown'
         td
           abbr(title=address(package.origin.address))= package.origin.name
         td

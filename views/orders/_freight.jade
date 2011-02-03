@@ -1,11 +1,23 @@
-tr(class="order-item freight")
+- refunded = isPresent(freight.refunded)
+- classes = ['order-item', 'freight']
+- if(refunded)
+  - classes.push('refunded')
+
+tr(class=classes.join(' '))
   th.c
-    input(type="checkbox", name='order-items', value=freight.id)
+    - if(refunded)
+      abbr(title="Refunded " + date(freight.refunded)) X
+    - else
+      input(type="checkbox", name='order-items', value=freight.id)
   td(colspan=5)
     = freight.description
     br
     small= freight.type
-  td.r= freight.amount.toCurrency()
+  td.r
+    - if(isPresent(freight.refunded))
+      abbr.amount(title="Refunded " + date(freight.refunded))= freight.amount.toCurrency()
+    - else
+      strong.amount= freight.amount.toCurrency()
   td.c
     small
       a(href="#") History

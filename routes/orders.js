@@ -42,6 +42,19 @@ app.get('/orders/completed', function(req, res){
   });
 });
 
+// Refund order lines
+app.post('/orders/refund', function(req, res){
+  Order.objects.refundLines(req.body.lines.split('-'), {
+    success: function() {
+      res.send("Ok!");
+    },
+    error: function(data, response) {
+      console.log(data);
+      res.send("It didn't work. /refunds isn't implemented yet.");
+    }
+  });
+});
+
 // Order details
 app.get('/orders/:id', function(req, res){
   Order.objects.get(req.params.id, function(order) {
@@ -70,20 +83,6 @@ app.post('/orders/:id', function(req, res){
       },
       error: function(data, response) {
         res.send("Error!");
-      }
-    });
-  });
-});
-
-// Refund order lines
-app.post('/orders/:id/refund', function(req, res){
-  Order.objects.get(req.params.id, function(order) {
-    order.refund(req.body.lines.split('-'), {
-      success: function() {
-        res.send("Ok!");
-      },
-      error: function() {
-        res.send("It didn't work. /refunds isn't implemented yet.");
       }
     });
   });
