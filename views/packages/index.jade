@@ -1,4 +1,4 @@
-h1= title + " (" + results.totalRecords + ")"
+h1= (!!results.params.state ? results.params.state + ' ' : '') + title + " (" + results.totalRecords + ")"
 
 != partial('../partials/search_form')
 

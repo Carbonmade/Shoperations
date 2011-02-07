@@ -3,5 +3,6 @@ form.header.search(action="", method="get")
   ul.filters
     li State
     li!= linkTo('All', '/' + results.model.name.toLowerCase() + 's', {class: !results.params.state ? 'active' : 'inactive'})
-    - for(state in results.model.stateFilters())
+    - var filters = results.model.stateFilters()
+    - for(state in filters)
       li!= linkTo(state, filters[state], {class: results.params.state === state ? 'active' : 'inactive'})
