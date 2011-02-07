@@ -210,9 +210,37 @@ form.search {
   border-top-right-radius: 6px;
   margin: 8px 0 0 0;
   text-align: right;
+  overflow: hidden;
 }
-form.search select { margin: 0 10px; }
-form.search input { margin: 0 10px; }
+form.search input[type="search"] { float: left; }
+form.search .filters {
+  float: right;
+  overflow: hidden;
+}
+form.search .filters li {
+  float: left;
+  font-size: 11px;
+  line-height: 21px;
+  color: #bbbbbb;
+}
+form.search .filters li a {
+  display: block;
+  background: #000000;
+  border-radius: 40px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  padding: 0 10px;
+  margin-left: 5px;
+  color: #888888;
+}
+form.search .filters li a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+form.search .filters li a.active {
+  background: #000000;
+  color: #ffffff;
+}
 form.search .statuses {
   font-size: 11px;
   line-height: 21px;

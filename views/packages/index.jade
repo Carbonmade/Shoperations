@@ -1,13 +1,12 @@
 h1= title + " (" + results.totalRecords + ")"
 
-form.search(action="", method="get")
-  p
-    input(type="search", placeholder="Keywords", name="q")
+- filters = results.model.stateFilters()
+!= partial('../partials/search_form', {object: filters})
 
 table
   thead
     tr
-      th ID
+      th.c ID
       th Tracking #
       th Shipment
       th Origin 
@@ -16,7 +15,7 @@ table
   tbody
     - each package in results.records
       tr
-        td!= package.link()
+        th.c!= package.link()
         td!= package.trackingNumber ? package.trackingNumber : '<small>Not shipped</small>'
         td
           != package.shippingMethod ? package.shippingMethod.name : '<small>Unknown</small>'
