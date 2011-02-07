@@ -1,7 +1,6 @@
 h1= title + " (" + results.totalRecords + ")"
 
-- filters = results.model.stateFilters()
-!= partial('../partials/search_form', {object: filters})
+!= partial('../partials/search_form')
 
 table
   thead

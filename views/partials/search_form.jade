@@ -2,7 +2,6 @@ form.header.search(action="", method="get")
   input(type="search", placeholder="Keywords", name="q", value=results.params.q || '')
   ul.filters
     li State
-    li!= linkTo('All', '/' + results.model.name.toLowerCase() + 's')
-    - for(state in filters)
-      - active = results.params.state === state || (!results.params.state && state === 'All')
-      li!= linkTo(state, filters[state], {class: active ? 'active' : 'inactive'})
+    li!= linkTo('All', '/' + results.model.name.toLowerCase() + 's', {class: !results.params.state ? 'active' : 'inactive'})
+    - for(state in results.model.stateFilters())
+      li!= linkTo(state, filters[state], {class: results.params.state === state ? 'active' : 'inactive'})
