@@ -11,8 +11,21 @@ Order.prototype.modelName = 'Order';
 
 Order.objects = new Collection(Order);
 
+Order.STATES = {
+  OPEN: 'Open',
+  PROCESSING: 'Processing',
+  COMPLETED: 'Completed'
+};
+
+Order.stateFilters = function() {
+  var filters = {};
+  for(state in Order.STATES)
+    if(Order.STATES.hasOwnProperty(state))
+      filters[Order.STATES[state]] = '/orders/' + state.toLowerCase();
+  return filters;
+};
+
 Order.objects.refundLines = function(lines, callbacks) {
-  // var refundURL = [this.url, 'refunds'].join('/');
   var refundURL = 'http://store.carbonmade.net/refunds',
       data = [],
       dataString;

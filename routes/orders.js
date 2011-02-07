@@ -1,45 +1,37 @@
 var Order = require('../models/order');
     
-function renderOrderList(response, title, results) {
-  response.render('orders/index', {
-    title: title,
-    results: results
+function _orderList(req, res, state) {
+  var params = req.query;
+  if(state) {
+    params.state = state;
+  }
+  Order.objects.find(params, function(results) {
+    res.render('orders/index', {
+      title: 'Orders',
+      results: results
+    });
   });
 };
 
 
 // All orders
 app.get('/orders', function(req, res){
-  Order.objects.find(req.query, function(results) {
-    renderOrderList(res, 'All orders', results);
-  });
+  _orderList(req, res);
 });
 
 // Open orders
 app.get('/orders/open', function(req, res){
-  var params = req.query;
-  params.state = "Open";
-  Order.objects.find(params, function(results) {
-    renderOrderList(res, 'Open orders', results);
-  });
+  _orderList(req, res, Order.STATES.OPEN);
 });
 
 // Processing orders
 app.get('/orders/processing', function(req, res){
-  var params = req.query;
-  params.state = "Processing";
-  Order.objects.find(params, function(results) {
-    renderOrderList(res, 'Processing orders', results);
-  });
+  _orderList(req, res, Order.STATES.PROCESSING);
 });
 
 // Completed orders
 app.get('/orders/completed', function(req, res){
-  var params = req.query;
-  params.state = "Completed";
-  Order.objects.find(params, function(results) {
-    renderOrderList(res, 'Completed orders', results);
-  });
+  _orderList(req, res, Order.STATES.COMPLETED);
 });
 
 // Refund order lines
