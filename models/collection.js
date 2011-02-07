@@ -33,7 +33,7 @@ Collection.prototype.find = function() {
   
   console.log("GET: " + url);
   this.api.get(url).addListener('complete', function(data, response) {
-    var results = {records:[], params:params};
+    var results = {records:[], params:params, model:collection.model};
     data.forEach(function(record) {
       results.records.push(new collection.model(record));
     });
