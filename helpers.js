@@ -85,3 +85,16 @@ helpers.isBlank = function(value) {
 helpers.isPresent = function(value) {
   return !helpers.isBlank(value);
 };
+
+helpers.linkTo = function(text, href, options) {
+  options = options || {};
+  options.href = href;
+  var attrs = [];
+  for(attr in options) {
+    if(options.hasOwnProperty(attr)) {
+      attrs.push(attr + '="' + options[attr] + '"');
+    }
+  };
+  return '<a ' + attrs.join(' ') + '>' + text + '</a>';
+};
+
