@@ -2,40 +2,46 @@ h1 Package Details
 
 table
   tr
+    th Tracking #
+    td!= package.trackingNumber ? package.trackingNumber : '<small>Not shipped</small>'
+    th Status
+    td!= status_label(package)
+  tr
     th Container
     td= package.container.description
-  tr
     th Dimensions
-    td= dimensions(package.container.dimensions)
-  tr
-    th Weight
-    td= package.weight
-  tr
-    th Origin
-    td 
-      = package.origin.name
-      br
-      small
-        address!= address(package.origin.address, '<br />')
-  tr
-    th Destination
-    td 
-      = package.destination.name
-      br
-      small
-        address!= address(package.destination.address, '<br />')
+    td
+      = dimensions(package.container.dimensions)
+      != linkTo('edit', "#", {class:'editInline'})
   tr
     th Postage
     td
       = package.postage.amount.toCurrency()
       small= " " + package.postage.provider
-  tr
-    th Status
+    th Weight
     td
-      span.status= package.status
-      
+      = package.weight
+      != linkTo('edit', "#", {class:'editInline'})
+table
   tr
-    th(rowspan=package.history.length+1) History
+    th(colspan=2) Origin
+    th(colspan=2) Destination
+  tr
+    td(colspan=2, style="padding:30px")
+      = package.origin.name
+      br
+      small
+        address!= address(package.origin.address, '<br />')
+    td(colspan=2, style="padding:30px")
+      = package.destination.name
+      br
+      small
+        address!= address(package.destination.address, '<br />')
+
+table
+  tr
+    th(colspan=2) History
+  tr
     td Created
     td
       small ???
