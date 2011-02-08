@@ -159,10 +159,8 @@ nav li.active a {
   font-size: 18px;
   line-height: 24px;
   font-weight: bold;
-  background: #eeeeee;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#eeeeee), to(#ffffff));
-  background-image: -moz-linear-gradient(top, #eeeeee, #ffffff);
   padding: 12px 6px;
+  margin-bottom: 10px;
 }
 .message {
   padding: 10px;
@@ -202,6 +200,19 @@ nav li.active a {
   background: #f7e99a;
   color: #aa972b;
 }
+.blankSlate {
+  text-align: center;
+  padding: 50px;
+}
+.blankSlate h2 {
+  font-size: 32px;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+.blankSlate p {
+  color: #999999;
+  font-size: 16px;
+}
 table.order tbody tr:last-child td { border-bottom: 5px solid #eeeeee; }
 tr.summary td {
   font-weight: bold;
@@ -218,7 +229,6 @@ form.search {
   -moz-border-radius-topright: 6px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  margin: 8px 0 0 0;
   text-align: right;
   overflow: hidden;
 }

@@ -2,51 +2,69 @@ h1 Package Details
 
 table
   tr
+    th Origin
+    th Destination
+  tr
+    td
+      strong= package.origin.name
+      address!= address(package.origin.address, ', ')
+    td
+      strong= package.destination.name
+      address!= address(package.destination.address, ', ')
+
+table
+  tr
+    th Shipping method
+    td= package.shippingMethod.name
     th Tracking #
     td!= package.trackingNumber ? package.trackingNumber : '<small>Not shipped</small>'
-    th Status
-    td!= status_label(package)
   tr
     th Container
     td= package.container.description
-    th Dimensions
-    td
-      = dimensions(package.container.dimensions)
-      != linkTo('edit', "#", {class:'editInline'})
+    th Status
+    td!= status_label(package)
   tr
+    th Dimensions
+    td= dimensions(package.container.dimensions)
     th Postage
     td
       = package.postage.amount.toCurrency()
       small= " " + package.postage.provider
+  tr
     th Weight
-    td
-      = package.weight
-      != linkTo('edit', "#", {class:'editInline'})
-table
-  tr
-    th(colspan=2) Origin
-    th(colspan=2) Destination
-  tr
-    td(colspan=2, style="padding:30px")
-      = package.origin.name
-      br
-      small
-        address!= address(package.origin.address, '<br />')
-    td(colspan=2, style="padding:30px")
-      = package.destination.name
-      br
-      small
-        address!= address(package.destination.address, '<br />')
+    td= package.weight
+    td(colspan=2)!= linkTo('Edit package details', "#")
 
-table
-  tr
-    th(colspan=2) History
-  tr
-    td Created
-    td
-      small ???
-  - each event in package.history
+
+ul.tabs
+  li!= linkTo('Items (' + package.items.length + ')', '#package-items')
+  li!= linkTo('History', '#package-history')
+
+#package-items.tab-panel
+  - if(isBlank(package.items))
+    .blankSlate
+      h2 No items in this package!
+      p How did that even happen?
+  - else
+    table
+      tr
+        th Description
+        th Specs
+        th Location
+        th Quantity
+      - each item in package.items
+        tr
+          td= item.product.description
+          td= Object.values(item.product.specifications).join(' ')
+          td= item.location.code
+          td= item.quantity
+
+#package-history.tab-panel
+  table
     tr
-      td= event.description
-      td
-        small= date(event.created)
+      td Created
+      td= date(package.created)
+    - each event in package.history
+      tr
+        td= event.description
+        td= date(event.created)
